@@ -23,5 +23,5 @@ To add a module to the project, add the following data in your configuration fil
         ...
     ],
 
-# Status
-Module in progress development.
+# Status and version
+v.1.0.0 - Module in progress development.

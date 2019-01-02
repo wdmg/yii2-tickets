@@ -18,7 +18,7 @@ class m180102_211516_geo_init extends Migration
         }
 
         $this->createTable('{{%tickets%}}', [
-
+            'id' => $this->primaryKey(), // Primary key ID
         ], $tableOptions);
 
     }
