@@ -17,7 +17,7 @@ To add a module to the project, add the following data in your configuration fil
 
     'modules' => [
         ...
-        'tasks' => [
+        'tickets' => [
             'class' => wdmg\tickets\Module::className(),
         ],
         ...
