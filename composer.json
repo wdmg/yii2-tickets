@@ -1,0 +1,30 @@
+{
+  "name": "wdmg/yii2-tickets",
+  "description": "Ticket system for Yii2",
+  "keywords": ["yii2", "yii2-tickets", "ticket system", "wdmg"],
+  "type": "yii2-extension",
+  "license": "MIT",
+  "version": "1.0.0",
+  "homepage": "https://github.com/wdmg/yii2-tickets",
+  "authors": [
+    {
+      "name": "Alexsander Vyshnyvetskyy",
+      "email": "alex.vyshnyvetskyy@gmail.com"
+    },
+    {
+      "name": "W.D.M.Group, Ukraine",
+      "email": "wdmg.com.ua@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.6.0",
+    "yiisoft/yii2": "~2.0.0",
+    "yiisoft/yii2-bootstrap": "~2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "wdmg\\tickets\\": ""
+    }
+  }
+}
