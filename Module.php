@@ -2,6 +2,8 @@
 
 namespace wdmg\tickets;
 
+use Yii;
+
 /**
  * tickets module definition class
  */
@@ -18,7 +20,8 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-
-        // custom initialization code goes here
+        if (Yii::$app instanceof \yii\console\Application) {
+            $this->controllerNamespace = 'wdmg\tickets\commands';
+        }
     }
 }
