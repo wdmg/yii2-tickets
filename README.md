@@ -1,2 +1,2 @@
-# yii2-tickets
+# Yii2 Tickets Module
 Ticket system for Yii2
