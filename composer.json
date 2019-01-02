@@ -16,15 +16,13 @@
       "email": "wdmg.com.ua@gmail.com"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
-    "php": ">=5.6.0",
-    "yiisoft/yii2": "~2.0.0",
-    "yiisoft/yii2-bootstrap": "~2.0.0"
+    "yiisoft/yii2": "*"
   },
+  "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "wdmg\\tickets\\": ""
+      "wdmg\\tasks\\": ""
     }
   }
 }
