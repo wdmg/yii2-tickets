@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m180103_175247_tickets_attachments
+ * Class m180103_224855_tickets_messages
  */
-class m180103_174855_tickets_messages extends Migration
+class m180103_224855_tickets_messages extends Migration
 {
     /**
      * {@inheritdoc}
@@ -27,6 +27,24 @@ class m180103_174855_tickets_messages extends Migration
             'attachment_id' => $this->integer()->null(), // Attachment ID (int) `tickets_attachment`.`id`
         ], $tableOptions);
 
+        $this->addForeignKey(
+            'fk_messages_to_tickets',
+            '{{%tickets_messages%}}',
+            'ticket_id',
+            '{{%tickets%}}',
+            'id',
+            'SET NULL',
+            'CASCADE'
+        );
+        $this->addForeignKey(
+            'fk_messages_to_users',
+            '{{%tickets_messages%}}',
+            'sender_id',
+            '{{%users%}}',
+            'id',
+            'SET NULL',
+            'CASCADE'
+        );
     }
 
     /**
