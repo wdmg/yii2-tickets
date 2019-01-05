@@ -27,24 +27,39 @@ class m180103_224855_tickets_messages extends Migration
             'attachment_id' => $this->integer()->null(), // Attachment ID (int) `tickets_attachment`.`id`
         ], $tableOptions);
 
-        $this->addForeignKey(
-            'fk_messages_to_tickets',
+        $this->createIndex(
+            'idx_tickets_messages',
             '{{%tickets_messages%}}',
-            'ticket_id',
-            '{{%tickets%}}',
-            'id',
-            'SET NULL',
-            'CASCADE'
+            [
+                'id',
+                'ticket_id',
+                'sender_id',
+            ]
         );
-        $this->addForeignKey(
-            'fk_messages_to_users',
-            '{{%tickets_messages%}}',
-            'sender_id',
-            '{{%users%}}',
-            'id',
-            'SET NULL',
-            'CASCADE'
-        );
+
+        if (!(Yii::$app->db->getTableSchema('{{%tickets%}}', true) === null)) {
+            $this->addForeignKey(
+                'fk_messages_to_tickets',
+                '{{%tickets_messages%}}',
+                'ticket_id',
+                '{{%tickets%}}',
+                'id',
+                'RESTRICT',
+                'CASCADE'
+            );
+        }
+
+        if (!(Yii::$app->db->getTableSchema('{{%users%}}', true) === null)) {
+            $this->addForeignKey(
+                'fk_messages_to_users',
+                '{{%tickets_messages%}}',
+                'sender_id',
+                '{{%users%}}',
+                'id',
+                'SET NULL',
+                'CASCADE'
+            );
+        }
     }
 
     /**
@@ -52,6 +67,20 @@ class m180103_224855_tickets_messages extends Migration
      */
     public function safeDown()
     {
+        if (!(Yii::$app->db->getTableSchema('{{%tickets%}}', true) === null)) {
+            $this->dropForeignKey(
+                'fk_messages_to_tickets',
+                '{{%tickets_messages%}}'
+            );
+        }
+
+        if (!(Yii::$app->db->getTableSchema('{{%users%}}', true) === null)) {
+            $this->dropForeignKey(
+                'fk_messages_to_users',
+                '{{%tickets_messages%}}'
+            );
+        }
+
         $this->truncateTable('{{%tickets_messages%}}');
         $this->dropTable('{{%tickets_messages%}}');
     }

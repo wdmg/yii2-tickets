@@ -31,27 +31,38 @@ class m180103_224518_tickets extends Migration
             'status' => $this->integer(2)->notNull()->defaultValue(10), // Ticket status (int): 10 - Open, 20 - Waiting, 30 - In Work, 40 - Closed
         ], $tableOptions);
 
-        $this->addForeignKey(
-            'fk_tickets_to_users',
-            '{{%tickets%}}',
-            [
+        if (!(Yii::$app->db->getTableSchema('{{%users%}}', true) === null)) {
+            $this->addForeignKey(
+                'fk_tickets_to_users',
+                '{{%tickets%}}',
                 'user_id',
-                'assigned_id'
-            ],
-            '{{%users%}}',
-            'id',
-            'SET NULL',
-            'CASCADE'
-        );
-        $this->addForeignKey(
-            'fk_tickets_to_tasks',
-            '{{%tickets%}}',
-            'task_id',
-            '{{%tasks%}}',
-            'id',
-            'SET NULL',
-            'CASCADE'
-        );
+                '{{%users%}}',
+                'id',
+                'NO ACTION',
+                'CASCADE'
+            );
+            $this->addForeignKey(
+                'fk_tickets_to_users_assigned',
+                '{{%tickets%}}',
+                'assigned_id',
+                '{{%users%}}',
+                'id',
+                'RESTRICT',
+                'CASCADE'
+            );
+        }
+
+        if (!(Yii::$app->db->getTableSchema('{{%tasks%}}', true) === null)) {
+            $this->addForeignKey(
+                'fk_tickets_to_tasks',
+                '{{%tickets%}}',
+                'task_id',
+                '{{%tasks%}}',
+                'id',
+                'SET NULL',
+                'CASCADE'
+            );
+        }
     }
 
     /**
@@ -59,6 +70,24 @@ class m180103_224518_tickets extends Migration
      */
     public function safeDown()
     {
+        if (!(Yii::$app->db->getTableSchema('{{%users%}}', true) === null)) {
+            $this->dropForeignKey(
+                'fk_tickets_to_users',
+                '{{%tickets%}}'
+            );
+            $this->dropForeignKey(
+                'fk_tickets_to_users_assigned',
+                '{{%tickets%}}'
+            );
+        }
+
+        if (!(Yii::$app->db->getTableSchema('{{%users%}}', true) === null)) {
+            $this->dropForeignKey(
+                'fk_tickets_to_tasks',
+                '{{%tickets%}}'
+            );
+        }
+
         $this->truncateTable('{{%tickets%}}');
         $this->dropTable('{{%tickets%}}');
     }
