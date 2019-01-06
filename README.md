@@ -23,6 +23,9 @@ To add a module to the project, add the following data in your configuration fil
         ...
     ],
 
+# Routing
+`http://example.com/admin/tickets` - Module dashboard
+
 # Status and version
 v.1.0.1 - Added migrations path to Bootstrap.
 v.1.0.0 - Module in progress development.

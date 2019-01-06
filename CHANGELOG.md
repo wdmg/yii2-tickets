@@ -1,6 +1,9 @@
 Changelog
 =========
 
-## 1.0.0 (2019-01-03)
+## 1.0.1 (2019-01-06)
+ * Added base module routing
+ * Added base module migrations
 
- * first pre-release
+## 1.0.0 (2019-01-03)
+ * First pre-release

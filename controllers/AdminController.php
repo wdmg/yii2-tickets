@@ -7,7 +7,7 @@ use yii\web\Controller;
 /**
  * Default controller for the `tickets` module
  */
-class DefaultController extends Controller
+class AdminController extends Controller
 {
     /**
      * Renders the index view for the module
