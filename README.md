@@ -1,6 +1,12 @@
 # Yii2 Tickets Module
 Ticket system for Yii2
 
+#Requirements 
+* PHP 5.6
+* Yii2 (v.2.0.10)
+* [Yii2 Tasks](https://github.com/wdmg/yii2-tasks) module (optionaly)
+* Yii2 Users module (optionaly)
+
 # Installation
 To install the module, run the following command in the console:
 
