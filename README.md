@@ -12,8 +12,16 @@ To install the module, run the following command in the console:
 
 `$ composer require "wdmg/yii2-tickets"`
 
+After configure db connection, run the following command in the console:
+
+`$ php yii tickets/init`
+
+And select the operation you want to perform:
+  1) Apply all module migrations
+  2) Revert all module migrations
+
 # Migrations
-To execute the migration and create the initial data, run the following command in the console:
+In any case, you can execute the migration and create the initial data, run the following command in the console:
 
 `$ php yii migrate --migrationPath=@vendor/wdmg/yii2-tickets/migrations`
 
