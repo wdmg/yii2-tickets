@@ -25,6 +25,7 @@ To add a module to the project, add the following data in your configuration fil
         ...
         'tickets' => [
             'class' => 'wdmg\tickets\Module',
+            'routePrefix' => 'admin'
         ],
         ...
     ],

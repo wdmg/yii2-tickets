@@ -18,6 +18,10 @@
                 <dd><code><?= get_class($this->context) ?></code></dd>
                 <dt>Path to this view:</dt>
                 <dd><code><?= __FILE__ ?></code></dd>
+                <dt>Module vendor:</dt>
+                <dd><code><?= $this->context->module->vendor ?></code></dd>
+                <dt>Routing prefix:</dt>
+                <dd><code><?= $this->context->module->routePrefix ?></code></dd>
             </dl>
         </div>
     </div>

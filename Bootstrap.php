@@ -9,10 +9,15 @@ class Bootstrap implements BootstrapInterface
 {
     public function bootstrap($app)
     {
+        // Get the module instance
+        $module = Yii::$app->getModule('tickets');
+
         // Add module URL rules.
+        $prefix = (isset($module->routePrefix) ? $module->routePrefix . '/' : '');
+
         $app->getUrlManager()->addRules(
             [
-                'admin/<_m>' => '<_m>/admin/index',
+                $prefix.'<_m>' => '<_m>/admin/index',
             ],
             false
         );
