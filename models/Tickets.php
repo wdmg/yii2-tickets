@@ -38,13 +38,17 @@ class Tickets extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [
+        $rules = [
             [['subunit', 'user_id', 'assigned_id', 'task_id', 'status'], 'integer'],
             [['message'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['subject', 'access_token'], 'string', 'max' => 255],
-            [['task_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tasks::className(), 'targetAttribute' => ['task_id' => 'id']],
         ];
+
+        if(class_exists('\wdmg\tasks\models\Tasks'))
+            $rules[] = [['task_id'], 'exist', 'skipOnError' => true, 'targetClass' => \wdmg\tasks\models\Tasks::className(), 'targetAttribute' => ['task_id' => 'id']];
+
+        return $rules;
     }
 
     /**
