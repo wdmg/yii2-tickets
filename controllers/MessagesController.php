@@ -3,16 +3,16 @@
 namespace wdmg\tickets\controllers;
 
 use Yii;
-use wdmg\tickets\models\TicketsAttachments;
-use wdmg\tickets\models\TicketsAttachmentsSearch;
+use wdmg\tickets\models\TicketsMessages;
+use wdmg\tickets\models\TicketsMessagesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * TicketsAttachmentsController implements the CRUD actions for TicketsAttachments model.
+ * MessagesController implements the CRUD actions for TicketsMessages model.
  */
-class TicketsAttachmentsController extends Controller
+class MessagesController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class TicketsAttachmentsController extends Controller
     }
 
     /**
-     * Lists all TicketsAttachments models.
+     * Lists all TicketsMessages models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TicketsAttachmentsSearch();
+        $searchModel = new TicketsMessagesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class TicketsAttachmentsController extends Controller
     }
 
     /**
-     * Displays a single TicketsAttachments model.
+     * Displays a single TicketsMessages model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class TicketsAttachmentsController extends Controller
     }
 
     /**
-     * Creates a new TicketsAttachments model.
+     * Creates a new TicketsMessages model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new TicketsAttachments();
+        $model = new TicketsMessages();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class TicketsAttachmentsController extends Controller
     }
 
     /**
-     * Updates an existing TicketsAttachments model.
+     * Updates an existing TicketsMessages model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class TicketsAttachmentsController extends Controller
     }
 
     /**
-     * Deletes an existing TicketsAttachments model.
+     * Deletes an existing TicketsMessages model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class TicketsAttachmentsController extends Controller
     }
 
     /**
-     * Finds the TicketsAttachments model based on its primary key value.
+     * Finds the TicketsMessages model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return TicketsAttachments the loaded model
+     * @return TicketsMessages the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = TicketsAttachments::findOne($id)) !== null) {
+        if (($model = TicketsMessages::findOne($id)) !== null) {
             return $model;
         }
 

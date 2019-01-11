@@ -3,6 +3,7 @@
 namespace wdmg\tickets;
 
 use yii\base\BootstrapInterface;
+use Yii;
 
 
 class Bootstrap implements BootstrapInterface
@@ -12,17 +13,17 @@ class Bootstrap implements BootstrapInterface
         // Get the module instance
         $module = Yii::$app->getModule('tickets');
 
-        // Add module URL rules.
+        // Get URL path prefix if exist
         $prefix = (isset($module->routePrefix) ? $module->routePrefix . '/' : '');
 
+        // Add module URL rules
         $app->getUrlManager()->addRules(
             [
-                $prefix.'<_m>' => '<_m>/admin/index',
+                $prefix.'<controller:(tickets|attachments|messages)>/' => 'tickets/<controller>/index',
+                $prefix.'tickets/<controller:(tickets|attachments|messages)>/<action:\w+>' => 'tickets/<controller>/<action>',
+                $prefix.'<controller:(tickets|attachments|messages)>/<action:\w+>' => 'tickets/<controller>/<action>',
             ],
             false
         );
-
-        /*$app->controllerMap["migrate"]["class"] = 'yii\console\controllers\MigrateController';
-        $app->controllerMap["migrate"]["migrationNamespaces"][] = 'wdmg\tickets\migrations';*/
     }
 }
