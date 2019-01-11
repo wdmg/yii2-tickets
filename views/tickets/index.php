@@ -26,16 +26,71 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            'subunit',
             'subject',
             'message:ntext',
             'user_id',
-            //'assigned_id',
-            //'task_id',
+            'assigned_id',
+            [
+                'attribute' => 'task_id',
+                'format' => 'raw',
+                'header' => Yii::t('app/modules/tickets', 'Task'),
+                'value' => function($model) {
+                    if($model->task_id == $model->task['id'])
+                        return Html::a($model->task['title'], ['../admin/tasks/view/?id='.$model->task['id']], [
+                            'target' => '_blank',
+                            'data-pjax' => 0
+                        ]);
+                    else
+                        return $model->id;
+                }
+            ],
+            'subunit',
             //'access_token',
-            //'created_at',
-            //'updated_at',
-            //'status',
+            [
+                'attribute' => 'created_at',
+                'format' => 'datetime',
+                'headerOptions' => [
+                    'class' => 'text-center'
+                ],
+                'contentOptions' => [
+                    'class' => 'text-center'
+                ]
+            ],
+            /*[
+                'attribute' => 'updated_at',
+                'format' => 'datetime',
+                'headerOptions' => [
+                    'class' => 'text-center'
+                ],
+                'contentOptions' => [
+                    'class' => 'text-center'
+                ]
+            ],*/
+            [
+                'attribute' => 'status',
+                'format' => 'html',
+                'filter' => false,
+                'headerOptions' => [
+                    'class' => 'text-center'
+                ],
+                'contentOptions' => [
+                    'class' => 'text-center'
+                ],
+                'value' => function($data, $model) {
+
+                    if ($data->status == wdmg\tickets\models\Tickets::TK_STATUS_OPEN)
+                        return '<span class="label label-danger">'.Yii::t('app/modules/tickets','Open').'</span>';
+                    elseif ($data->status == wdmg\tickets\models\Tickets::TK_STATUS_WATING)
+                        return '<span class="label label-info">'.Yii::t('app/modules/tickets','Waiting').'</span>';
+                    elseif ($data->status == wdmg\tickets\models\Tickets::TK_STATUS_INWORK)
+                        return '<span class="label label-warning">'.Yii::t('app/modules/tickets','In Work').'</span>';
+                    elseif ($data->status == wdmg\tickets\models\Tickets::TK_STATUS_CLOSED)
+                        return '<span class="label label-success">'.Yii::t('app/modules/tickets','Closed').'</span>';
+                    else
+                        return false;
+
+                },
+            ],
 
             [
                 'class' => 'yii\grid\ActionColumn',

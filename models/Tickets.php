@@ -25,6 +25,16 @@ use Yii;
  */
 class Tickets extends \yii\db\ActiveRecord
 {
+
+    /**
+     * Ticket status
+     * const, int: 10 - Open, 20 - Waiting, 30 - In Work, 40 - Closed
+     */
+    const TK_STATUS_OPEN = 10;
+    const TK_STATUS_WATING = 20;
+    const TK_STATUS_INWORK = 30;
+    const TK_STATUS_CLOSED = 40;
+
     /**
      * {@inheritdoc}
      */
@@ -76,7 +86,10 @@ class Tickets extends \yii\db\ActiveRecord
      */
     public function getTask()
     {
-        return $this->hasOne(Tasks::className(), ['id' => 'task_id']);
+        if(class_exists('\wdmg\tasks\models\Tasks'))
+            return $this->hasOne(\wdmg\tasks\models\Tasks::className(), ['id' => 'task_id']);
+        else
+            return null;
     }
 
     /**

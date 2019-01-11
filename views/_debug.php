@@ -28,8 +28,6 @@ if (YII_ENV_DEV) : ?>
                     <dd><code><?= $this->context->action->id ?> (<?= $this->context->action->uniqueId ?>)</code></dd>
                     <dt>Controller ID:</dt>
                     <dd><code><?= get_class($this->context) ?></code></dd>
-                    <dt>Path to this view:</dt>
-                    <dd><code><?= __FILE__ ?></code></dd>
                 </dl>
             </div>
         </div>
