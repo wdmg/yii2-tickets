@@ -8,6 +8,7 @@ use wdmg\tickets\models\TicketsAttachmentsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * AttachmentsController implements the CRUD actions for TicketsAttachments model.
@@ -24,6 +25,15 @@ class AttachmentsController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
                 ],
             ],
         ];
