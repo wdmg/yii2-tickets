@@ -3,12 +3,15 @@
 namespace wdmg\tickets\controllers;
 
 use Yii;
-use wdmg\tickets\models\Tickets;
-use wdmg\tickets\models\TicketsSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use wdmg\tickets\models\Tickets;
+use wdmg\tickets\models\TicketsSearch;
+use wdmg\tickets\models\TicketsMessages;
+use wdmg\tickets\models\TicketsMessagesSearch;
 
 /**
  * TicketsController implements the CRUD actions for Tickets model.
@@ -62,8 +65,17 @@ class TicketsController extends Controller
      */
     public function actionView($id)
     {
+        $messages = $this->findMessagesModel($id);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $messages->orderBy('created_at'),
+            'pagination' => [
+                'pageSize' => 20,
+            ],
+        ]);
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -133,5 +145,19 @@ class TicketsController extends Controller
         }
 
         throw new NotFoundHttpException(Yii::t('app/modules/tickets', 'The requested page does not exist.'));
+    }
+
+    /**
+     * Finds the Tickets Messages model based on its primary key value.
+     *
+     * @param integer $id
+     * @return Tickets the loaded model or null
+     */
+    protected function findMessagesModel($id)
+    {
+        if (($model = TicketsMessagesSearch::find()->where(['ticket_id' => $id])) !== null) {
+            return $model;
+        }
+        return null;
     }
 }

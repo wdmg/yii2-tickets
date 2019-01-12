@@ -20,6 +20,7 @@ use Yii;
  */
 class TicketsMessages extends \yii\db\ActiveRecord
 {
+
     /**
      * {@inheritdoc}
      */
@@ -37,7 +38,7 @@ class TicketsMessages extends \yii\db\ActiveRecord
             [['ticket_id'], 'required'],
             [['ticket_id', 'sender_id', 'attachment_id'], 'integer'],
             [['message'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['attachment', 'created_at', 'updated_at'], 'safe'],
             [['attachment_id'], 'exist', 'skipOnError' => true, 'targetClass' => TicketsAttachments::className(), 'targetAttribute' => ['attachment_id' => 'id']],
             [['ticket_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tickets::className(), 'targetAttribute' => ['ticket_id' => 'id']],
         ];
@@ -55,6 +56,7 @@ class TicketsMessages extends \yii\db\ActiveRecord
             'message' => Yii::t('app/modules/tickets', 'Message'),
             'created_at' => Yii::t('app/modules/tickets', 'Created At'),
             'updated_at' => Yii::t('app/modules/tickets', 'Updated At'),
+            'attachment' => Yii::t('app/modules/tickets', 'Attachment'),
             'attachment_id' => Yii::t('app/modules/tickets', 'Attachment ID'),
         ];
     }
