@@ -18,10 +18,10 @@ class m180111_184622_import extends Migration
             $this->insert('{{tickets}}', [
                 'subject' => 'Some test ticket #'.$i,
                 'message' => 'The description or message of some '.$i.' ticket...',
-                'subunit' => rand(1, 5),
                 'user_id' => null,
                 'assigned_id' => rand(2, 5),
                 'task_id' => rand(2, 6),
+                'subunit_id' => rand(1, 3),
                 'access_token' => Yii::$app->security->generateRandomString(16),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),

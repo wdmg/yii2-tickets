@@ -23,16 +23,77 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'subunit',
             'subject',
             'message:ntext',
             'user_id',
             'assigned_id',
-            'task_id',
-            'access_token',
-            'created_at',
-            'updated_at',
-            'status',
+            [
+                'attribute' => 'task_id',
+                'format' => 'html',
+                'label' => Yii::t('app/modules/tickets', 'Task'),
+                'value' => function($model) {
+                    if($model->task_id == $model->task['id'])
+                        return Html::a($model->task['title'], ['../admin/tasks/view/?id='.$model->task['id']], [
+                            'target' => '_blank',
+                            'data-pjax' => 0
+                        ]);
+                    else
+                        return $model->id;
+                }
+            ],
+            [
+                'attribute' => 'subunit_id',
+                'format' => 'html',
+                'label' => Yii::t('app/modules/tickets', 'Subunit'),
+                'value' => function($model) {
+                    if($model->subunit_id == $model->subunit['id'])
+                        return Html::a($model->subunit['title'], ['../admin/tasks/subunits/view/?id='.$model->subunit['id']], [
+                            'target' => '_blank',
+                            'data-pjax' => 0
+                        ]);
+                    else
+                        return $model->subunit_id;
+                }
+            ],
+            [
+                'attribute' => 'access_token',
+                'format' => 'html',
+                'value' => function($model) {
+                    if($model->access_token)
+                        return Html::a($model->access_token, '#'.$model->access_token, [
+                            'target' => '_blank',
+                            'data-pjax' => 0
+                        ]);
+                    else
+                        return $model->$model->access_token;
+                }
+            ],
+            [
+                'attribute' => 'created_at',
+                'format' => 'datetime',
+            ],
+            [
+                'attribute' => 'updated_at',
+                'format' => 'datetime',
+            ],
+            [
+                'attribute' => 'status',
+                'format' => 'html',
+                'value' => function($data, $model) {
+
+                    if ($data->status == wdmg\tickets\models\Tickets::TK_STATUS_OPEN)
+                        return '<span class="label label-danger">'.Yii::t('app/modules/tickets','Open').'</span>';
+                    elseif ($data->status == wdmg\tickets\models\Tickets::TK_STATUS_WATING)
+                        return '<span class="label label-info">'.Yii::t('app/modules/tickets','Waiting').'</span>';
+                    elseif ($data->status == wdmg\tickets\models\Tickets::TK_STATUS_INWORK)
+                        return '<span class="label label-warning">'.Yii::t('app/modules/tickets','In Work').'</span>';
+                    elseif ($data->status == wdmg\tickets\models\Tickets::TK_STATUS_CLOSED)
+                        return '<span class="label label-success">'.Yii::t('app/modules/tickets','Closed').'</span>';
+                    else
+                        return false;
+
+                },
+            ],
         ],
     ]) ?>
 

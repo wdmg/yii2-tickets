@@ -24,7 +24,7 @@ class TicketsSearch extends Tickets
     public function rules()
     {
         return [
-            [['id', 'subunit', 'user_id', 'assigned_id', 'status'], 'integer'],
+            [['id', 'subunit_id', 'user_id', 'assigned_id', 'status'], 'integer'],
             [['subject', 'task_id', 'message', 'access_token', 'created_at', 'updated_at'], 'safe'],
         ];
     }
@@ -66,7 +66,7 @@ class TicketsSearch extends Tickets
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'subunit' => $this->subunit,
+            'subunit_id' => $this->subunit_id,
             'user_id' => $this->user_id,
             'assigned_id' => $this->assigned_id,
             'created_at' => $this->created_at,

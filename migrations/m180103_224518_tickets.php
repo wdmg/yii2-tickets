@@ -24,7 +24,7 @@ class m180103_224518_tickets extends Migration
             'user_id' => $this->integer()->null(), // Ticket created by (int) `users`.`id`
             'assigned_id' => $this->integer()->null(), // Designated performer (int) `users`.`id`
             'task_id' => $this->integer()->null(), // ID created task if exist (int) `tasks`.`id`
-            'subunit' => $this->integer()->null(), // Subdivision ID (int) `tasks_subunits`.`id`
+            'subunit_id' => $this->integer()->null(), // Subdivision ID (int) `tasks_subunits`.`id`
             'access_token' => $this->string(255), // Ticket access token (string)
             'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'), // Ticket created date (timestamp)
             'updated_at' => $this->datetime()->defaultExpression('CURRENT_TIMESTAMP'), // Ticket updated date (timestamp)

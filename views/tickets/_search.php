@@ -29,17 +29,16 @@ use yii\widgets\ActiveForm;
 
                 <?= $form->field($model, 'id') ?>
 
-                <?= $form->field($model, 'subunit') ?>
 
                 <?= $form->field($model, 'subject') ?>
 
                 <?= $form->field($model, 'message') ?>
 
                 <?= $form->field($model, 'user_id') ?>
+                <?= $form->field($model, 'task_id') ?>
+                <?= $form->field($model, 'subunit_id') ?>
 
                 <?php // echo $form->field($model, 'assigned_id') ?>
-
-                <?php // echo $form->field($model, 'task_id') ?>
 
                 <?php // echo $form->field($model, 'access_token') ?>
 

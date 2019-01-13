@@ -49,9 +49,9 @@ class Tickets extends \yii\db\ActiveRecord
     public function rules()
     {
         $rules = [
-            [['subunit', 'user_id', 'assigned_id', 'task_id', 'status'], 'integer'],
+            [['subunit_id', 'user_id', 'assigned_id', 'task_id', 'status'], 'integer'],
             [['message'], 'string'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['subunit', 'created_at', 'updated_at'], 'safe'],
             [['subject', 'access_token'], 'string', 'max' => 255],
         ];
 
@@ -68,12 +68,12 @@ class Tickets extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app/modules/tickets', 'ID'),
-            'subunit' => Yii::t('app/modules/tickets', 'Subunit'),
             'subject' => Yii::t('app/modules/tickets', 'Subject'),
             'message' => Yii::t('app/modules/tickets', 'Message'),
             'user_id' => Yii::t('app/modules/tickets', 'User ID'),
             'assigned_id' => Yii::t('app/modules/tickets', 'Assigned ID'),
             'task_id' => Yii::t('app/modules/tickets', 'Task ID'),
+            'subunit_id' => Yii::t('app/modules/tickets', 'Subunit'),
             'access_token' => Yii::t('app/modules/tickets', 'Access Token'),
             'created_at' => Yii::t('app/modules/tickets', 'Created At'),
             'updated_at' => Yii::t('app/modules/tickets', 'Updated At'),
@@ -88,6 +88,17 @@ class Tickets extends \yii\db\ActiveRecord
     {
         if(class_exists('\wdmg\tasks\models\Tasks') && isset(Yii::$app->modules['tasks']))
             return $this->hasOne(\wdmg\tasks\models\Tasks::className(), ['id' => 'task_id']);
+        else
+            return null;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSubunit()
+    {
+        if(class_exists('\wdmg\tasks\models\TasksSubunits') && isset(Yii::$app->modules['tasks']))
+            return $this->hasOne(\wdmg\tasks\models\TasksSubunits::className(), ['id' => 'subunit_id']);
         else
             return null;
     }

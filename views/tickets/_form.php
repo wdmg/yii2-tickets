@@ -12,8 +12,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'subunit')->textInput() ?>
-
     <?= $form->field($model, 'subject')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'message')->textarea(['rows' => 6]) ?>
@@ -23,6 +21,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'assigned_id')->textInput() ?>
 
     <?= $form->field($model, 'task_id')->textInput() ?>
+
+    <?= $form->field($model, 'subunit_id')->textInput() ?>
 
     <?= $form->field($model, 'access_token')->textInput(['maxlength' => true]) ?>
 

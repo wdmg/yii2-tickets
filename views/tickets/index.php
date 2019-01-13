@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'assigned_id',
             [
                 'attribute' => 'task_id',
-                'format' => 'raw',
+                'format' => 'html',
                 'header' => Yii::t('app/modules/tickets', 'Task'),
                 'value' => function($model) {
                     if($model->task_id == $model->task['id'])
@@ -44,7 +44,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         return $model->id;
                 }
             ],
-            'subunit',
+            [
+                'attribute' => 'subunit_id',
+                'format' => 'html',
+                'header' => Yii::t('app/modules/tickets', 'Subunit'),
+                'value' => function($model) {
+                    if($model->subunit_id == $model->subunit['id'])
+                        return Html::a($model->subunit['title'], ['../admin/tasks/subunits/view/?id='.$model->subunit['id']], [
+                            'target' => '_blank',
+                            'data-pjax' => 0
+                        ]);
+                    else
+                        return $model->subunit_id;
+                }
+            ],
             //'access_token',
             [
                 'attribute' => 'created_at',
