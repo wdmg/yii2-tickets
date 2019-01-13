@@ -46,6 +46,25 @@ class Tickets extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    self::EVENT_BEFORE_INSERT => 'created_at',
+                    self::EVENT_BEFORE_UPDATE => 'updated_at',
+                ],
+                'value' => function() {
+                    return date("Y-m-d H:i:s");
+                }
+            ],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function rules()
     {
         $rules = [
