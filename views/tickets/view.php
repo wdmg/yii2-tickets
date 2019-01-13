@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?> <small class="text-muted pull-right">[v.<?= $this->context->module->version ?>]</small></h1>
 </div>
 <div class="tickets-view">
-
+    
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -70,11 +70,49 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'created_at',
-                'format' => 'datetime',
+                'format' => 'html',
+                'value' => function($data) {
+
+                    $datenow = new DateTime("now");
+                    $created = new DateTime($data->created_at);
+                    $interval = $datenow->diff($created);
+
+                    $along = Yii::t(
+                        'app/modules/tasks',
+                        '{y, plural, =0{} =1{# year} one{# year} few{# years} many{# years} other{# years}}{y, plural, =0{} =1{, } other{, }}{m, plural, =0{} =1{# month} one{# month} few{# months} many{# months} other{# months}}{m, plural, =0{} =1{, } other{, }}{d, plural, =0{} =1{# day} one{# day} few{# days} many{# days} other{# days}}{d, plural, =0{} =1{, } other{, }}{h, plural, =0{} =1{# hour} one{# hour} few{# hours} many{# hours} other{# hours}}{h, plural, =0{} =1{, } other{, }}{i, plural, =0{} =1{# minute} one{# minute} few{# minutes} many{# minutes} other{# minutes}}{i, plural, =0{} =1{, } other{, }}{s, plural, =0{} =1{# second} one{# second} few{# seconds} many{# seconds} other{# seconds}}{invert, plural, =0{ left} =1{ ago} other{}}',
+                        $interval
+                    );
+
+                    if($interval->invert == 1)
+                        $along = ' <small class="pull-right text-danger">[ ' . $along . ' ]</small>';
+                    else
+                        $along = ' <small class="pull-right text-success">[ ' . $along . ' ]</small>';
+
+                    return \Yii::$app->formatter->asDatetime($data->created_at) . $along;
+                }
             ],
             [
                 'attribute' => 'updated_at',
-                'format' => 'datetime',
+                'format' => 'html',
+                'value' => function($data) {
+
+                    $datenow = new DateTime("now");
+                    $updated = new DateTime($data->updated_at);
+                    $interval = $datenow->diff($updated);
+
+                    $along = Yii::t(
+                        'app/modules/tasks',
+                        '{y, plural, =0{} =1{# year} one{# year} few{# years} many{# years} other{# years}}{y, plural, =0{} =1{, } other{, }}{m, plural, =0{} =1{# month} one{# month} few{# months} many{# months} other{# months}}{m, plural, =0{} =1{, } other{, }}{d, plural, =0{} =1{# day} one{# day} few{# days} many{# days} other{# days}}{d, plural, =0{} =1{, } other{, }}{h, plural, =0{} =1{# hour} one{# hour} few{# hours} many{# hours} other{# hours}}{h, plural, =0{} =1{, } other{, }}{i, plural, =0{} =1{# minute} one{# minute} few{# minutes} many{# minutes} other{# minutes}}{i, plural, =0{} =1{, } other{, }}{s, plural, =0{} =1{# second} one{# second} few{# seconds} many{# seconds} other{# seconds}}{invert, plural, =0{ left} =1{ ago} other{}}',
+                        $interval
+                    );
+
+                    if($interval->invert == 1)
+                        $along = ' <small class="pull-right text-danger">[ ' . $along . ' ]</small>';
+                    else
+                        $along = ' <small class="pull-right text-success">[ ' . $along . ' ]</small>';
+
+                    return \Yii::$app->formatter->asDatetime($data->updated_at) . $along;
+                }
             ],
             [
                 'attribute' => 'status',
