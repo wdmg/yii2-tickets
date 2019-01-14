@@ -19,7 +19,7 @@ class m180111_184622_import extends Migration
                 'subject' => 'Some test ticket #'.$i,
                 'message' => 'The description or message of some '.$i.' ticket...',
                 'user_id' => null,
-                'assigned_id' => rand(2, 5),
+                'assigned_id' => rand(102, 105),
                 'task_id' => rand(2, 6),
                 'subunit_id' => rand(1, 3),
                 'access_token' => Yii::$app->security->generateRandomString(16),
@@ -35,7 +35,7 @@ class m180111_184622_import extends Migration
 
             $this->insert('{{tickets_attachments}}', [
                 'ticket_id' => $ticked_id,
-                'sender_id' => rand(1, 2),
+                'sender_id' => rand(101, 102),
                 'filename' => 'UploadFile-'.rand(1, 2).'.jpg',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
@@ -44,7 +44,7 @@ class m180111_184622_import extends Migration
 
             $this->insert('{{tickets_messages}}', [
                 'ticket_id' => $ticked_id,
-                'sender_id' => rand(1, 2),
+                'sender_id' => rand(101, 102),
                 'message' => 'Some text message to ticket...',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),

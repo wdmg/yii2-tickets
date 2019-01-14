@@ -138,4 +138,26 @@ class Tickets extends \yii\db\ActiveRecord
     {
         return $this->hasMany(TicketsMessages::className(), ['ticket_id' => 'id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']))
+            return $this->hasOne(\wdmg\users\models\Users::className(), ['id' => 'user_id']);
+        else
+            return null;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAssigned()
+    {
+        if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']))
+            return $this->hasOne(\wdmg\users\models\Users::className(), ['id' => 'assigned_id']);
+        else
+            return null;
+    }
 }

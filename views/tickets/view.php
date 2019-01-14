@@ -25,18 +25,53 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'subject',
             'message:ntext',
-            'user_id',
-            'assigned_id',
+            [
+                'attribute' => 'user_id',
+                'format' => 'html',
+                'label' => Yii::t('app/modules/tickets', 'User'),
+                'value' => function($model) {
+                    if($model->user_id == $model->user['id'])
+                        if($model->user['id'] && $model->user['username'])
+                            return Html::a($model->user['username'], ['../admin/users/view/?id='.$model->user['id']], [
+                                'target' => '_blank',
+                                'data-pjax' => 0
+                            ]);
+                        else
+                            return $model->user_id;
+                    else
+                        return $model->user_id;
+                }
+            ],
+            [
+                'attribute' => 'assigned_id',
+                'format' => 'html',
+                'label' => Yii::t('app/modules/tickets', 'Assigned user'),
+                'value' => function($model) {
+                    if($model->assigned_id == $model->assigned['id'])
+                        if($model->user['id'] && $model->user['username'])
+                            return Html::a($model->assigned['username'], ['../admin/users/view/?id='.$model->assigned['id']], [
+                                'target' => '_blank',
+                                'data-pjax' => 0
+                            ]);
+                        else
+                            return $model->assigned_id;
+                    else
+                        return $model->assigned_id;
+                }
+            ],
             [
                 'attribute' => 'task_id',
                 'format' => 'html',
                 'label' => Yii::t('app/modules/tickets', 'Task'),
                 'value' => function($model) {
                     if($model->task_id == $model->task['id'])
-                        return Html::a($model->task['title'], ['../admin/tasks/view/?id='.$model->task['id']], [
-                            'target' => '_blank',
-                            'data-pjax' => 0
-                        ]);
+                        if($model->task['id'] && $model->task['title'])
+                            return Html::a($model->task['title'], ['../admin/tasks/view/?id='.$model->task['id']], [
+                                'target' => '_blank',
+                                'data-pjax' => 0
+                            ]);
+                        else
+                            return $model->id;
                     else
                         return $model->id;
                 }
@@ -47,10 +82,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => Yii::t('app/modules/tickets', 'Subunit'),
                 'value' => function($model) {
                     if($model->subunit_id == $model->subunit['id'])
-                        return Html::a($model->subunit['title'], ['../admin/tasks/subunits/view/?id='.$model->subunit['id']], [
-                            'target' => '_blank',
-                            'data-pjax' => 0
-                        ]);
+                        if($model->subunit['id'] && $model->subunit['title'])
+                            return Html::a($model->subunit['title'], ['../admin/tasks/subunits/view/?id='.$model->subunit['id']], [
+                                'target' => '_blank',
+                                'data-pjax' => 0
+                            ]);
+                        else
+                            return $model->subunit_id;
                     else
                         return $model->subunit_id;
                 }
