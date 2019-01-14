@@ -20,6 +20,14 @@ return [
     'Status' => 'Статус',
     'Actions' => 'Действия',
 
+    'Messages' => 'Сообщения',
+    'Message text' => 'Текст сообщения',
+    'User' => 'Пользователь',
+    'Assigned user' => 'Назначенный пользователь',
+    'Date/time' => 'Дата/время',
+    'Attachments' => 'Вложения',
+    'Attachment' => 'Вложение',
+
     'Open' => 'Открыт',
     'Waiting' => 'Ожидание',
     'In Work' => 'В работе',

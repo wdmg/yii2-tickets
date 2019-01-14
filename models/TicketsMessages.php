@@ -96,4 +96,15 @@ class TicketsMessages extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Tickets::className(), ['id' => 'ticket_id']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSender()
+    {
+        if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']))
+            return $this->hasOne(\wdmg\users\models\Users::className(), ['id' => 'sender_id']);
+        else
+            return null;
+    }
 }

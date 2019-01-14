@@ -11,6 +11,7 @@ use wdmg\tickets\models\TicketsMessages;
  */
 class TicketsMessagesSearch extends TicketsMessages
 {
+
     /**
      * {@inheritdoc}
      */

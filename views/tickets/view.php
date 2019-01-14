@@ -181,15 +181,27 @@ $this->params['breadcrumbs'][] = $this->title;
             if ($data->ticket_id == $model->id) {
                 ?>
                 <dl id="ticketMessage-<?= $data->ticket_id ?>" class="dl-horizontal border-bottom">
-                    <dt>User:</dt>
-                    <dd><?= $data->sender_id ?></dd>
-                    <dt>Date/time:</dt>
+                    <dt><?= Yii::t('app/modules/tickets', 'User') ?>:</dt>
+                    <dd><?php
+                        if($data->sender_id == $data->sender['id'])
+                            if($data->sender['id'] && $data->sender['username'])
+                                echo Html::a($data->sender['username'], ['../admin/users/view/?id='.$data->sender['id']], [
+                                    'target' => '_blank',
+                                    'data-pjax' => 0
+                                ]);
+                            else
+                                echo $data->sender_id;
+                        else
+                            echo $data->sender_id;
+
+                    ?></dd>
+                    <dt><?= Yii::t('app/modules/tickets', 'Date/time') ?>:</dt>
                     <dd><?= \Yii::$app->formatter->asDatetime($data->created_at, 'long') ?></dd>
-                    <dt>Message:</dt>
+                    <dt><?= Yii::t('app/modules/tickets', 'Message text') ?>:</dt>
                     <dd><?= $data->message ?></dd>
                     <?php if ($data->attachment_id) : ?>
                         <?php if (($data->attachment_id == $data->attachment['id']) && ($data->sender_id == $data->attachment['sender_id'])) : ?>
-                            <dt>Attachment:</dt>
+                            <dt><?= Yii::t('app/modules/tickets', 'Attachment') ?>:</dt>
                             <dd><?= Html::a($data->attachment['filename'], "#", ['id' => 'ticketAttachment-'.$data->attachment_id]) ?></dd>
                         <? endif; ?>
                     <? endif; ?>
@@ -199,9 +211,10 @@ $this->params['breadcrumbs'][] = $this->title;
             return;
         }
     ]); ?>
+
     <?php Pjax::end(); ?>
     <hr/>
-    <p>
+    <div class="form-group">
         <?= Html::a(Yii::t('app/modules/tickets', '&larr; Back to list'), ['tickets/index'], ['class' => 'btn btn-default']) ?>
         <?= Html::a(Yii::t('app/modules/tickets', 'Edit'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app/modules/tickets', 'Delete'), ['delete', 'id' => $model->id], [
@@ -211,6 +224,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-    </p>
+    </div>
 
 </div>
