@@ -117,15 +117,15 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'status',
                 'format' => 'html',
-                'value' => function($data, $model) {
+                'value' => function($data) {
 
-                    if ($data->status == wdmg\tickets\models\Tickets::TK_STATUS_OPEN)
+                    if ($data->status == $data::TK_STATUS_OPEN)
                         return '<span class="label label-danger">'.Yii::t('app/modules/tickets','Open').'</span>';
-                    elseif ($data->status == wdmg\tickets\models\Tickets::TK_STATUS_WATING)
+                    elseif ($data->status == $data::TK_STATUS_WATING)
                         return '<span class="label label-info">'.Yii::t('app/modules/tickets','Waiting').'</span>';
-                    elseif ($data->status == wdmg\tickets\models\Tickets::TK_STATUS_INWORK)
+                    elseif ($data->status == $data::TK_STATUS_INWORK)
                         return '<span class="label label-warning">'.Yii::t('app/modules/tickets','In Work').'</span>';
-                    elseif ($data->status == wdmg\tickets\models\Tickets::TK_STATUS_CLOSED)
+                    elseif ($data->status == $data::TK_STATUS_CLOSED)
                         return '<span class="label label-success">'.Yii::t('app/modules/tickets','Closed').'</span>';
                     else
                         return false;

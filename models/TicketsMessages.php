@@ -3,6 +3,7 @@
 namespace wdmg\tickets\models;
 
 use Yii;
+use \yii\behaviors\TimeStampBehavior;
 
 /**
  * This is the model class for table "tickets_messages".
