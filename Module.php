@@ -41,7 +41,7 @@ class Module extends \yii\base\Module
     // Registers translations for the module
     public function registerTranslations()
     {
-        Yii::$app->i18n->translations['app/modules/tickets*'] = [
+        Yii::$app->i18n->translations['app/modules/tickets'] = [
             'class' => 'yii\i18n\PhpMessageSource',
             'sourceLanguage' => 'en-US',
             'basePath' => '@vendor/wdmg/yii2-tickets/messages',
