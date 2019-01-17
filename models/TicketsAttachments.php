@@ -26,7 +26,7 @@ class TicketsAttachments extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'tickets_attachments';
+        return '{{tickets_attachments}}';
     }
 
     /**
