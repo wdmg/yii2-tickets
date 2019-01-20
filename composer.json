@@ -4,7 +4,7 @@
   "keywords": ["yii2", "yii2-tickets", "ticket system", "wdmg"],
   "type": "yii2-extension",
   "license": "MIT",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/wdmg/yii2-tickets",
   "authors": [
     {
@@ -18,7 +18,7 @@
   ],
   "require": {
     "yiisoft/yii2": "^2.0.10",
-    "wdmg/yii2-helpers": "^1.0.0"
+    "wdmg/yii2-helpers": "^1.0.1"
   },
   "minimum-stability": "dev",
   "autoload": {
@@ -27,6 +27,6 @@
     }
   },
   "extra": {
-    "bootstrap": "wdmg\\geo\\Bootstrap"
+    "bootstrap": "wdmg\\tickets\\Bootstrap"
   }
 }
