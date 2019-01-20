@@ -1,9 +1,11 @@
+[![Progress](https://img.shields.io/badge/required-Yii2_v2.0.13-blue.svg)](https://packagist.org/packages/yiisoft/yii2) [![Github all releases](https://img.shields.io/github/downloads/wdmg/yii2-tickets/total.svg)](https://GitHub.com/wdmg/yii2-tickets/releases/) [![GitHub version](https://badge.fury.io/gh/wdmg%2Fyii2-tickets.svg)](https://github.com/wdmg/yii2-tickets) ![Progress](https://img.shields.io/badge/progress-in_development-red.svg) [![GitHub license](https://img.shields.io/github/license/wdmg/yii2-tickets.svg)](https://github.com/wdmg/yii2-tickets/blob/master/LICENSE)
+
 # Yii2 Tickets Module
 Ticket system for Yii2
 
 # Requirements 
 * PHP 5.6 or higher
-* Yii2 v.2.0.10 and newest
+* Yii2 v.2.0.13 and newest
 * [Yii2 Tasks](https://github.com/wdmg/yii2-tasks) module (optionaly)
 * [Yii2 Users](https://github.com/wdmg/yii2-users) module (optionaly)
 
@@ -48,7 +50,7 @@ $config['bootstrap'][] = 'wdmg\tickets\Bootstrap';
 `http://example.com/admin/tickets` - Module dashboard
 
 # Status and version
-v.1.0.3 - Added base CRUD interface
-v.1.0.2 - Added routing path to Bootstrap.
-v.1.0.1 - Added migrations path to Bootstrap.
-v.1.0.0 - Module in progress development.
+* v.1.0.3 - Added base CRUD interface
+* v.1.0.2 - Added routing path to Bootstrap.
+* v.1.0.1 - Added migrations path to Bootstrap.
+* v.1.0.0 - Module in progress development.
