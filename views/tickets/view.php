@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => Yii::t('app/modules/tickets', 'Assigned user'),
                 'value' => function($model) {
                     if($model->assigned_id == $model->assigned['id'])
-                        if($model->user['id'] && $model->user['username'])
+                        if($model->assigned['id'] && $model->assigned['username'])
                             return Html::a($model->assigned['username'], ['../admin/users/view/?id='.$model->assigned['id']], [
                                 'target' => '_blank',
                                 'data-pjax' => 0
