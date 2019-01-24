@@ -55,7 +55,7 @@ class TicketsSearch extends Tickets
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $current_user = null)
     {
         $query = Tickets::find();
 
@@ -72,6 +72,10 @@ class TicketsSearch extends Tickets
             // $query->where('0=1');
             return $dataProvider;
         }
+
+        // if need load custom user
+        if($current_user)
+            $this->user_id = $current_user;
 
         // grid filtering conditions
         $query->andFilterWhere([

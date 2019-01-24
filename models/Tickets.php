@@ -142,10 +142,10 @@ class Tickets extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUser()
+    public function getAssigned()
     {
         if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']))
-            return $this->hasOne(\wdmg\users\models\Users::className(), ['id' => 'user_id']);
+            return $this->hasOne(\wdmg\users\models\Users::className(), ['id' => 'assigned_id']);
         else
             return null;
     }
@@ -153,10 +153,12 @@ class Tickets extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAssigned()
+    public function getUser($user_id = null)
     {
-        if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']))
-            return $this->hasOne(\wdmg\users\models\Users::className(), ['id' => 'assigned_id']);
+        if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']) && !$user_id)
+            return $this->hasOne(\wdmg\users\models\Users::className(), ['id' => 'user_id']);
+        else if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']) && $user_id)
+            return \wdmg\users\models\Users::findOne(['id' => intval($user_id)]);
         else
             return null;
     }

@@ -15,6 +15,11 @@ class Module extends \yii\base\Module
     public $controllerNamespace = 'wdmg\tickets\controllers';
 
     /**
+     * {@inheritdoc}
+     */
+    public $defaultRoute = 'list';
+
+    /**
      * @var string the prefix for routing of module
      */
     public $routePrefix = "admin";

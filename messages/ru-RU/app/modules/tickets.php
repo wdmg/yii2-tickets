@@ -3,6 +3,10 @@
 return [
 
     'Tickets' => 'Тикеты',
+    'All tickets' => 'Все тикеты',
+    'My tickets' => 'Мои тикеты',
+    'User tickets' => 'Тикеты пользователя',
+    'User tickets: {name}' => 'Тикеты пользователя: {name}',
     'Ticket' => 'Тикет',
 
     'Tickets search' => 'Поиск по тикетам',

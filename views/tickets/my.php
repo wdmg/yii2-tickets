@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel wdmg\tickets\models\TicketsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app/modules/tickets', 'Tickets');
+$this->title = Yii::t('app/modules/tickets', 'My tickets');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page-header">
@@ -16,7 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="tickets-index">
 
     <?php Pjax::begin(); ?>
-    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -27,23 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'subject',
             'message:ntext',
-            [
-                'attribute' => 'user_id',
-                'format' => 'html',
-                'header' => Yii::t('app/modules/tickets', 'User'),
-                'value' => function($model) {
-                    if($model->user_id == $model->user['id'])
-                        if($model->user['id'] && $model->user['username'])
-                            return Html::a($model->user['username'], ['../admin/users/view/?id='.$model->user['id']], [
-                                'target' => '_blank',
-                                'data-pjax' => 0
-                            ]);
-                        else
-                            return $model->user_id;
-                    else
-                        return $model->user_id;
-                }
-            ],
             [
                 'attribute' => 'assigned_id',
                 'format' => 'html',

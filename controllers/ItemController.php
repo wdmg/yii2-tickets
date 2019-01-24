@@ -14,9 +14,9 @@ use wdmg\tickets\models\TicketsMessages;
 use wdmg\tickets\models\TicketsMessagesSearch;
 
 /**
- * TicketsController implements the CRUD actions for Tickets model.
+ * ItemController implements the CRUD actions for Tickets model.
  */
-class TicketsController extends Controller
+class ItemController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -75,22 +75,18 @@ class TicketsController extends Controller
             $session['viewed-flash'] = array_merge(array_unique($viewed), ['tickets-need-modules']);
         }
 
+        parent::setViewPath('@vendor/wdmg/yii2-tickets/views/tickets');
+
         return parent::beforeAction($action);
     }
 
     /**
-     * Lists all Tickets models.
+     * Go back to all Tickets models from /tickets/list/all.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new TicketsSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        return $this->goBack(['tickets/list/all']);
     }
 
     /**
