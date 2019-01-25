@@ -47,7 +47,15 @@ $config['bootstrap'][] = 'wdmg\tickets\Bootstrap';
 `
 
 # Routing
-`http://example.com/admin/tickets` - Module dashboard
+- `/admin/tickets/list/` - All tickets
+- `/admin/tickets/list/all/` - Some as all tickets
+- `/admin/tickets/list/my/` - Tickets in which an authorized user has been assigned
+- `/admin/tickets/list/current/?id=100` - Tickets created by user
+- `/admin/tickets/item/create/` - Create new ticket
+- `/admin/tickets/item/view/?id=1` - View info of selected ticket by ID
+- `/admin/tickets/item/update/?id=1` - Edit selected ticket by ID
+- `/admin/tickets/item/delete/?id=1` - Delete selected ticket by ID
+
 
 # Status and version
 * v.1.0.3 - Added base CRUD interface

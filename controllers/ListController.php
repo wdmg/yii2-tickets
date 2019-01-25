@@ -79,6 +79,7 @@ class ListController extends Controller
             $session['viewed-flash'] = array_merge(array_unique($viewed), ['tickets-need-modules']);
         }
 
+        // Set custom view path
         parent::setViewPath('@vendor/wdmg/yii2-tickets/views/tickets');
 
         return parent::beforeAction($action);
@@ -100,7 +101,7 @@ class ListController extends Controller
     }
 
     /**
-     * Lists only current user Tickets models.
+     * Lists only current user assigned Tickets models.
      * @return mixed
      */
     public function actionCurrent($id)
@@ -119,7 +120,7 @@ class ListController extends Controller
     }
 
     /**
-     * Lists only auth user Tickets models.
+     * Lists only auth user assigned Tickets models.
      * @return mixed
      */
     public function actionMy()

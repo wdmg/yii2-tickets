@@ -10,7 +10,7 @@ use wdmg\helpers\DateAndTime;
 /* @var $model wdmg\tickets\models\Tickets */
 
 $this->title = $model->subject;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app/modules/tickets', 'Tickets'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app/modules/tickets', 'Tickets'), 'url' => ['list/all']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 
@@ -67,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($model) {
                     if($model->task_id == $model->task['id'])
                         if($model->task['id'] && $model->task['title'])
-                            return Html::a($model->task['title'], ['../admin/tasks/view/?id='.$model->task['id']], [
+                            return Html::a($model->task['title'], ['../admin/tasks/item/view/?id='.$model->task['id']], [
                                 'target' => '_blank',
                                 'data-pjax' => 0
                             ]);

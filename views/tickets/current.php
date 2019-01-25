@@ -8,7 +8,9 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app/modules/tickets', 'User tickets: {name}', ['name' => $username]);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app/modules/tickets', 'Tickets'), 'url' => ['list/all']];
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="page-header">
     <h1><?= Html::encode($this->title) ?> <small class="text-muted pull-right">[v.<?= $this->context->module->version ?>]</small></h1>
@@ -27,20 +29,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'subject',
             'message:ntext',
             [
-                'attribute' => 'assigned_id',
+                'attribute' => 'user_id',
                 'format' => 'html',
                 'header' => Yii::t('app/modules/tickets', 'Assigned user'),
                 'value' => function($model) {
-                    if($model->assigned_id == $model->assigned['id'])
-                        if($model->assigned['id'] && $model->assigned['username'])
-                            return Html::a($model->assigned['username'], ['../admin/users/view/?id='.$model->assigned['id']], [
+                    if($model->user_id == $model->user['id'])
+                        if($model->user['id'] && $model->user['username'])
+                            return Html::a($model->user['username'], ['../admin/users/view/?id='.$model->user['id']], [
                                 'target' => '_blank',
                                 'data-pjax' => 0
                             ]);
                         else
-                            return $model->assigned_id;
+                            return $model->user_id;
                     else
-                        return $model->assigned_id;
+                        return $model->user_id;
                 }
             ],
             [
@@ -50,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($model) {
                     if($model->task_id == $model->task['id'])
                         if($model->task['id'] && $model->task['title'])
-                            return Html::a($model->task['title'], ['../admin/tasks/view/?id='.$model->task['id']], [
+                            return Html::a($model->task['title'], ['../admin/tasks/item/view/?id='.$model->task['id']], [
                                 'target' => '_blank',
                                 'data-pjax' => 0
                             ]);
@@ -119,6 +121,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 'contentOptions' => [
                     'class' => 'text-center'
                 ],
+                'urlCreator' => function ($action, $model, $key, $index) {
+
+                    if ($action === 'view')
+                        return \yii\helpers\Url::toRoute(['item/view', 'id' => $key]);
+
+                    if ($action === 'update')
+                        return \yii\helpers\Url::toRoute(['item/update', 'id' => $key]);
+
+                    if ($action === 'delete')
+                        return \yii\helpers\Url::toRoute(['item/delete', 'id' => $key]);
+
+                }
             ],
         ],
         'pager' => [
@@ -144,10 +158,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
-    <div>
-        <!-- ?= Html::a(Yii::t('app/modules/tickets', '&larr; Back to module'), ['../admin/tickets'], ['class' => 'btn btn-default pull-left']) ? -->
-        <?= Html::a(Yii::t('app/modules/tickets', 'Add new ticket'), ['create'], ['class' => 'btn btn-success pull-right']) ?>
-    </div>
     <?php Pjax::end(); ?>
 </div>
 

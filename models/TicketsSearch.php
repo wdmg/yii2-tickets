@@ -75,7 +75,7 @@ class TicketsSearch extends Tickets
 
         // if need load custom user
         if($current_user)
-            $this->user_id = $current_user;
+            $this->assigned_id = $current_user;
 
         // grid filtering conditions
         $query->andFilterWhere([
