@@ -112,24 +112,6 @@ class ItemController extends Controller
     }
 
     /**
-     * Creates a new Tickets model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Tickets();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
      * Updates an existing Tickets model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
