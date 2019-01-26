@@ -12,6 +12,7 @@ return [
     'Tickets search' => 'Поиск по тикетам',
     'Add new ticket' => 'Добавить новый тикет',
 
+    'ID' => 'ИД',
     'Subunit' => 'Подразделение',
     'Subject' => 'Тема',
     'Message' => 'Сообщение',
