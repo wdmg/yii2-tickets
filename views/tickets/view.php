@@ -188,11 +188,32 @@ $this->params['breadcrumbs'][] = $this->title;
             return;
         }
     ]); ?>
-
     <?php Pjax::end(); ?>
+
     <hr/>
+    <?php if ($model->status !== $model::TK_STATUS_CLOSED) : ?>
+        <div class="form-group">
+            <label><?= Yii::t('app/modules/tickets', 'Change task status on') ?>: </label>
+            <?php
+
+                if($model->status !== $model::TK_STATUS_OPEN)
+                    echo Html::a(Yii::t('app/modules/tickets', 'Open'), ['item/set/', 'id' => $model->id, 'status' => $model::TK_STATUS_OPEN], ['class' => 'btn btn-danger', 'style' => 'margin-left: 1rem;']);
+
+                if($model->status !== $model::TK_STATUS_WATING)
+                    echo Html::a(Yii::t('app/modules/tickets', 'Waiting'), ['item/set/', 'id' => $model->id, 'status' => $model::TK_STATUS_WATING], ['class' => 'btn btn-info', 'style' => 'margin-left: 1rem;']);
+
+                if($model->status !== $model::TK_STATUS_INWORK)
+                    echo Html::a(Yii::t('app/modules/tickets', 'In Work'), ['item/set/', 'id' => $model->id, 'status' => $model::TK_STATUS_INWORK], ['class' => 'btn btn-warning', 'style' => 'margin-left: 1rem;']);
+
+                if($model->status !== $model::TK_STATUS_CLOSED)
+                    echo Html::a(Yii::t('app/modules/tickets', 'Closed'), ['item/set/', 'id' => $model->id, 'status' => $model::TK_STATUS_CLOSED], ['class' => 'btn btn-success', 'style' => 'margin-left: 1rem;']);
+
+            ?>&nbsp;
+        </div>
+        <hr/>
+    <?php endif; ?>
     <div class="form-group">
-        <?= Html::a(Yii::t('app/modules/tickets', '&larr; Back to list'), ['tickets/index'], ['class' => 'btn btn-default']) ?>
+        <?= Html::a(Yii::t('app/modules/tickets', '&larr; Back to list'), ['list/all'], ['class' => 'btn btn-default']) ?>
         <?= Html::a(Yii::t('app/modules/tickets', 'Edit'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app/modules/tickets', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger pull-right',

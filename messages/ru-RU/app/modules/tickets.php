@@ -40,6 +40,9 @@ return [
     'View ticket: {name}' => 'Просмотр тикета: {name}',
     'Update ticket: {name}' => 'Редактирование тикета: {name}',
 
+    'Ticket has been successfully updated!' => 'Тикет был успешно обновлён!',
+    'An error occurred while updating the ticket.' => 'Произошла ошибка при обновлении тикета.',
+
     'Update' => 'Обновить',
     'Edit' => 'Редактировать',
     'Search' => 'Поиск',
