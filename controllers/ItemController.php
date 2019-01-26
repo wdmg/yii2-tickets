@@ -23,7 +23,7 @@ class ItemController extends Controller
      */
     public function behaviors()
     {
-        return [
+        $behaviors = [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -34,12 +34,27 @@ class ItemController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'allow' => true,
-                        'roles' => ['@']
+                        'roles' => ['admin'],
+                        'allow' => true
                     ],
                 ],
             ],
         ];
+
+        // If auth manager not configured use default access control
+        if(!Yii::$app->authManager) {
+            $behaviors['access'] = [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'roles' => ['@'],
+                        'allow' => true
+                    ],
+                ]
+            ];
+        }
+
+        return $behaviors;
     }
 
     /**
