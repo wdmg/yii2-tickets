@@ -32,7 +32,7 @@ class Module extends \yii\base\Module
     /**
      * @var string the module version
      */
-    public $version = "1.0.3";
+    public $version = "1.0.4";
 
     /**
      * @var array of strings missing translations
