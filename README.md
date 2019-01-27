@@ -40,7 +40,7 @@ To add a module to the project, add the following data in your configuration fil
         ...
     ],
 
-and Bootstrap section:
+If you have connected the module not via a composer add Bootstrap section:
 
 `
 $config['bootstrap'][] = 'wdmg\tickets\Bootstrap';
