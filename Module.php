@@ -48,7 +48,7 @@ class Module extends \yii\base\Module
 
         // Set controller namespace for console commands
         if (Yii::$app instanceof \yii\console\Application)
-            $this->controllerNamespace = 'wdmg\rbac\commands';
+            $this->controllerNamespace = 'wdmg\tickets\commands';
 
         // Set current version of module
         $this->setVersion($this->version);
