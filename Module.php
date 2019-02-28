@@ -27,12 +27,17 @@ class Module extends \yii\base\Module
     /**
      * @var string the vendor name of module
      */
-    public $vendor = "wdmg";
+    private $vendor = "wdmg";
 
     /**
      * @var string the module version
      */
-    public $version = "1.0.4";
+    private $version = "1.0.5";
+
+    /**
+     * @var integer, priority of initialization
+     */
+    private $priority = 10;
 
     /**
      * @var array of strings missing translations
@@ -55,6 +60,14 @@ class Module extends \yii\base\Module
 
         // Register translations
         $this->registerTranslations();
+    }
+
+    /**
+     * Return module vendor
+     * @var string of current module vendor
+     */
+    public function getVendor() {
+        return $this->vendor;
     }
 
     /**

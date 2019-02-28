@@ -17,7 +17,7 @@ class m180103_224518_tickets extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%tickets%}}', [
+        $this->createTable('{{%tickets}}', [
             'id' => $this->primaryKey(), // Primary key ID (int)
             'subject' => $this->string(255), // Ticket subject (string)
             'message' => $this->text(), // Ticket message (string)
@@ -31,33 +31,33 @@ class m180103_224518_tickets extends Migration
             'status' => $this->integer(2)->notNull()->defaultValue(10), // Ticket status (int): 10 - Open, 20 - Waiting, 30 - In Work, 40 - Closed
         ], $tableOptions);
 
-        if (!(Yii::$app->db->getTableSchema('{{%users%}}', true) === null)) {
+        if (!(Yii::$app->db->getTableSchema('{{%users}}', true) === null)) {
             $this->addForeignKey(
                 'fk_tickets_to_users',
-                '{{%tickets%}}',
+                '{{%tickets}}',
                 'user_id',
-                '{{%users%}}',
+                '{{%users}}',
                 'id',
                 'NO ACTION',
                 'CASCADE'
             );
             $this->addForeignKey(
                 'fk_tickets_to_users_assigned',
-                '{{%tickets%}}',
+                '{{%tickets}}',
                 'assigned_id',
-                '{{%users%}}',
+                '{{%users}}',
                 'id',
                 'RESTRICT',
                 'CASCADE'
             );
         }
 
-        if (!(Yii::$app->db->getTableSchema('{{%tasks%}}', true) === null)) {
+        if (!(Yii::$app->db->getTableSchema('{{%tasks}}', true) === null)) {
             $this->addForeignKey(
                 'fk_tickets_to_tasks',
-                '{{%tickets%}}',
+                '{{%tickets}}',
                 'task_id',
-                '{{%tasks%}}',
+                '{{%tasks}}',
                 'id',
                 'SET NULL',
                 'CASCADE'
@@ -70,25 +70,25 @@ class m180103_224518_tickets extends Migration
      */
     public function safeDown()
     {
-        if (!(Yii::$app->db->getTableSchema('{{%users%}}', true) === null)) {
+        if (!(Yii::$app->db->getTableSchema('{{%users}}', true) === null)) {
             $this->dropForeignKey(
                 'fk_tickets_to_users',
-                '{{%tickets%}}'
+                '{{%tickets}}'
             );
             $this->dropForeignKey(
                 'fk_tickets_to_users_assigned',
-                '{{%tickets%}}'
+                '{{%tickets}}'
             );
         }
 
-        if (!(Yii::$app->db->getTableSchema('{{%users%}}', true) === null)) {
+        if (!(Yii::$app->db->getTableSchema('{{%users}}', true) === null)) {
             $this->dropForeignKey(
                 'fk_tickets_to_tasks',
-                '{{%tickets%}}'
+                '{{%tickets}}'
             );
         }
 
-        $this->truncateTable('{{%tickets%}}');
-        $this->dropTable('{{%tickets%}}');
+        $this->truncateTable('{{%tickets}}');
+        $this->dropTable('{{%tickets}}');
     }
 }

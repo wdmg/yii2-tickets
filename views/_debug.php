@@ -21,7 +21,7 @@ if (YII_ENV_DEV) : ?>
                     <dt>Module version:</dt>
                     <dd><code><?= $this->context->module->version ?></code></dd>
                     <dt>Module vendor:</dt>
-                    <dd><code><?= $this->context->module->vendor ?></code></dd>
+                    <dd><code><?= $this->context->module->getVendor() ?></code></dd>
                     <dt>Routing prefix:</dt>
                     <dd><code><?= $this->context->module->routePrefix ?></code></dd>
                     <dt>Action ID:</dt>

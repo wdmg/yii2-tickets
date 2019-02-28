@@ -57,9 +57,10 @@ $config['bootstrap'][] = 'wdmg\tickets\Bootstrap';
 - `/admin/tickets/item/delete/?id=1` - Delete selected ticket by ID
 
 
-# Status and version
+# Status and version [in progress development]
+* v.1.0.5 - Fixing tables names in migrations
 * v.1.0.4 - Bugfix and refactoring
 * v.1.0.3 - Added base CRUD interface
 * v.1.0.2 - Added routing path to Bootstrap.
 * v.1.0.1 - Added migrations path to Bootstrap.
-* v.1.0.0 - Module in progress development.
+* v.1.0.0 - First pre-release

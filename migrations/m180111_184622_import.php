@@ -15,7 +15,7 @@ class m180111_184622_import extends Migration
     {
 
         for ($i = 1; $i <= 10; $i++) {
-            $this->insert('{{tickets}}', [
+            $this->insert('{{%tickets}}', [
                 'subject' => 'Some test ticket #'.$i,
                 'message' => 'The description or message of some '.$i.' ticket...',
                 'user_id' => null,
@@ -33,7 +33,7 @@ class m180111_184622_import extends Migration
 
             $ticked_id = rand(2, 8);
 
-            $this->insert('{{tickets_attachments}}', [
+            $this->insert('{{%tickets_attachments}}', [
                 'ticket_id' => $ticked_id,
                 'sender_id' => rand(101, 102),
                 'filename' => 'UploadFile-'.rand(1, 2).'.jpg',
@@ -42,7 +42,7 @@ class m180111_184622_import extends Migration
                 'status' => intval(rand(1, 2).'0')
             ]);
 
-            $this->insert('{{tickets_messages}}', [
+            $this->insert('{{%tickets_messages}}', [
                 'ticket_id' => $ticked_id,
                 'sender_id' => rand(101, 102),
                 'message' => 'Some text message to ticket...',

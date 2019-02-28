@@ -27,7 +27,7 @@ class TicketsMessages extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{tickets_messages}}';
+        return '{{%tickets_messages}}';
     }
 
     /**
