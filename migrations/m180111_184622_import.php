@@ -25,6 +25,7 @@ class m180111_184622_import extends Migration
                 'access_token' => Yii::$app->security->generateRandomString(16),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
+                'label' => intval(rand(1, 10)),
                 'status' => intval(rand(1, 4).'0')
             ]);
         }

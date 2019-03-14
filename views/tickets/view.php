@@ -129,6 +129,37 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]);
                 }
             ],
+
+            [
+                'attribute' => 'label',
+                'format' => 'html',
+                'value' => function($data) {
+
+                    if ($data->label == $data::TK_LABEL_UNLABELED)
+                        return '<span class="label label-default">'.Yii::t('app/modules/tickets','Unlabeled').'</span>';
+                    elseif ($data->label == $data::TK_LABEL_BUG)
+                        return '<span class="label label-danger">'.Yii::t('app/modules/tickets','Bug').'</span>';
+                    elseif ($data->label == $data::TK_LABEL_DUPLICATE)
+                        return '<span class="label label-info">'.Yii::t('app/modules/tickets','Duplicate').'</span>';
+                    elseif ($data->label == $data::TK_LABEL_ENHANCEMENT)
+                        return '<span class="label label-success">'.Yii::t('app/modules/tickets','Enhancement').'</span>';
+                    elseif ($data->label == $data::TK_LABEL_HELP_WANTED)
+                        return '<span class="label label-danger">'.Yii::t('app/modules/tickets','Help wanted').'</span>';
+                    elseif ($data->label == $data::TK_LABEL_REVIEW_NEEDED)
+                        return '<span class="label label-warning">'.Yii::t('app/modules/tickets','Review needed').'</span>';
+                    elseif ($data->label == $data::TK_LABEL_INVALID)
+                        return '<span class="label label-warning">'.Yii::t('app/modules/tickets','Invalid').'</span>';
+                    elseif ($data->label == $data::TK_LABEL_QUESTION)
+                        return '<span class="label label-success">'.Yii::t('app/modules/tickets','Question').'</span>';
+                    elseif ($data->label == $data::TK_LABEL_SKIPPED)
+                        return '<span class="label label-success">'.Yii::t('app/modules/tickets','Skipped').'</span>';
+                    elseif ($data->label == $data::TK_LABEL_WONTFIX)
+                        return '<span class="label label-warning">'.Yii::t('app/modules/tickets','Wontfix').'</span>';
+                    else
+                        return false;
+
+                },
+            ],
             [
                 'attribute' => 'status',
                 'format' => 'html',

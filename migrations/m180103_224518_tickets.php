@@ -28,6 +28,7 @@ class m180103_224518_tickets extends Migration
             'access_token' => $this->string(255), // Ticket access token (string)
             'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'), // Ticket created date (timestamp)
             'updated_at' => $this->datetime()->defaultExpression('CURRENT_TIMESTAMP'), // Ticket updated date (timestamp)
+            'label' => $this->integer(2)->notNull()->defaultValue(1), // Ticket label (int): 1 - Unlabeled, 2 - Bug, 3 - Duplicate, 4 - Enhancement, 5 - Help wanted, 6 - Review needed, 7 - Invalid, 8 - Question, 9 - Skipped, 10 - Wontfix
             'status' => $this->integer(2)->notNull()->defaultValue(10), // Ticket status (int): 10 - Open, 20 - Waiting, 30 - In Work, 40 - Closed
         ], $tableOptions);
 

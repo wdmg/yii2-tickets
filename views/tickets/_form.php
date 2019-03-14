@@ -26,12 +26,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'access_token')->textInput(['readonly' => true]) ?>
 
-    <?= $form->field($model, 'status')->dropDownList([
-        $model::TK_STATUS_OPEN => Yii::t('app/modules/tickets','Open'),
-        $model::TK_STATUS_WATING => Yii::t('app/modules/tickets','Waiting'),
-        $model::TK_STATUS_INWORK => Yii::t('app/modules/tickets','In Work'),
-        $model::TK_STATUS_CLOSED => Yii::t('app/modules/tickets','Closed')
-    ]); ?>
+    <?= $form->field($model, 'label')->dropDownList($model::getAllLabels()); ?>
+
+    <?= $form->field($model, 'status')->dropDownList($model::getAllStatus()); ?>
 
     <hr/>
     <div class="form-group">

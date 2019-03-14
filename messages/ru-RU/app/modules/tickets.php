@@ -38,6 +38,18 @@ return [
     'In Work' => 'В работе',
     'Closed' => 'Закрыт',
 
+    'Label' => 'Метка',
+    'Unlabeled' => 'Без метки',
+    'Bug' => 'Ошибка',
+    'Duplicate' => 'Дубликат',
+    'Enhancement' => 'Улучшение',
+    'Help wanted' => 'Требуется помощь',
+    'Review needed' => 'Обзор необходимости',
+    'Invalid' => 'Недействительный',
+    'Question' => 'Вопрос',
+    'Skipped' => 'Пропуск',
+    'Wontfix' => 'Не исправить',
+
     'View ticket: {name}' => 'Просмотр тикета: {name}',
     'Update ticket: {name}' => 'Редактирование тикета: {name}',
 

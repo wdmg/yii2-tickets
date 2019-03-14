@@ -37,6 +37,21 @@ class Tickets extends \yii\db\ActiveRecord
     const TK_STATUS_CLOSED = 40;
 
     /**
+     * Ticket labels
+     * const, int: 1 - Unlabeled, 2 - Bug, 3 - Duplicate, 4 - Enhancement, 5 - Help wanted, 6 - Review needed, 7 - Invalid, 8 - Question, 9 - Skipped, 10 - Wontfix
+     */
+    const TK_LABEL_UNLABELED = 1;
+    const TK_LABEL_BUG = 2;
+    const TK_LABEL_DUPLICATE = 3;
+    const TK_LABEL_ENHANCEMENT = 4;
+    const TK_LABEL_HELP_WANTED = 5;
+    const TK_LABEL_REVIEW_NEEDED = 6;
+    const TK_LABEL_INVALID = 7;
+    const TK_LABEL_QUESTION = 8;
+    const TK_LABEL_SKIPPED = 9;
+    const TK_LABEL_WONTFIX = 10;
+
+    /**
      * {@inheritdoc}
      */
     public static function tableName()
@@ -69,7 +84,7 @@ class Tickets extends \yii\db\ActiveRecord
     public function rules()
     {
         $rules = [
-            [['subunit_id', 'user_id', 'assigned_id', 'task_id', 'status'], 'integer'],
+            [['subunit_id', 'user_id', 'assigned_id', 'task_id', 'label', 'status'], 'integer'],
             [['message'], 'string'],
             [['subunit', 'created_at', 'updated_at'], 'safe'],
             [['subject', 'access_token'], 'string', 'max' => 255],
@@ -97,6 +112,7 @@ class Tickets extends \yii\db\ActiveRecord
             'access_token' => Yii::t('app/modules/tickets', 'Access Token'),
             'created_at' => Yii::t('app/modules/tickets', 'Created At'),
             'updated_at' => Yii::t('app/modules/tickets', 'Updated At'),
+            'label' => Yii::t('app/modules/tickets', 'Label'),
             'status' => Yii::t('app/modules/tickets', 'Status'),
         ];
     }
@@ -162,4 +178,39 @@ class Tickets extends \yii\db\ActiveRecord
         else
             return null;
     }
+
+    /**
+     * Return all ticket status
+     * @return array
+     */
+    public static function getAllStatus()
+    {
+        return [
+            self::TK_STATUS_OPEN => Yii::t('app/modules/tickets', 'Open'),
+            self::TK_STATUS_WATING => Yii::t('app/modules/tickets', 'Wating'),
+            self::TK_STATUS_INWORK => Yii::t('app/modules/tickets', 'In work'),
+            self::TK_STATUS_CLOSED => Yii::t('app/modules/tickets', 'Closed')
+        ];
+    }
+
+    /**
+     * Return all ticket labels
+     * @return array
+     */
+    public static function getAllLabels()
+    {
+        return [
+            self::TK_LABEL_UNLABELED => Yii::t('app/modules/tickets', 'Unlabeled'),
+            self::TK_LABEL_BUG => Yii::t('app/modules/tickets', 'Bug'),
+            self::TK_LABEL_DUPLICATE => Yii::t('app/modules/tickets', 'Duplicate'),
+            self::TK_LABEL_ENHANCEMENT => Yii::t('app/modules/tickets', 'Enhancement'),
+            self::TK_LABEL_HELP_WANTED => Yii::t('app/modules/tickets', 'Help wanted'),
+            self::TK_LABEL_REVIEW_NEEDED => Yii::t('app/modules/tickets', 'Review needed'),
+            self::TK_LABEL_INVALID => Yii::t('app/modules/tickets', 'Invalid'),
+            self::TK_LABEL_QUESTION => Yii::t('app/modules/tickets', 'Question'),
+            self::TK_LABEL_SKIPPED => Yii::t('app/modules/tickets', 'Skipped'),
+            self::TK_LABEL_WONTFIX => Yii::t('app/modules/tickets', 'Wontfix')
+        ];
+    }
+
 }
