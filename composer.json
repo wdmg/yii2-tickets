@@ -4,7 +4,7 @@
   "keywords": ["yii2", "yii2-tickets", "ticket system", "wdmg"],
   "type": "yii2-extension",
   "license": "MIT",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "homepage": "https://github.com/wdmg/yii2-tickets",
   "support": {
     "source": "https://github.com/wdmg/yii2-tickets",

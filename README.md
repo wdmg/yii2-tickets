@@ -28,7 +28,6 @@ In any case, you can execute the migration and create the initial data, run the 
 `$ php yii migrate --migrationPath=@vendor/wdmg/yii2-tickets/migrations`
 
 # Configure
-
 To add a module to the project, add the following data in your configuration file:
 
     'modules' => [
@@ -47,17 +46,22 @@ $config['bootstrap'][] = 'wdmg\tickets\Bootstrap';
 `
 
 # Routing
-- `/admin/tickets/list/` - All tickets
-- `/admin/tickets/list/all/` - Some as all tickets
-- `/admin/tickets/list/my/` - Tickets in which an authorized user has been assigned
-- `/admin/tickets/list/current/?id=100` - Tickets created by user
-- `/admin/tickets/item/create/` - Create new ticket
-- `/admin/tickets/item/view/?id=1` - View info of selected ticket by ID
-- `/admin/tickets/item/update/?id=1` - Edit selected ticket by ID
-- `/admin/tickets/item/delete/?id=1` - Delete selected ticket by ID
+Use the `Module::dashboardNavItems()` method of the module to generate a navigation items list for NavBar, like this:
+
+    <?php
+        echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+            'label' => 'Modules',
+            'items' => [
+                Yii::$app->getModule('tickets')->dashboardNavItems(),
+                ...
+            ]
+        ]);
+    ?>
 
 
 # Status and version [in progress development]
+* v.1.0.6 - Added dashboard navigation items for NavBar
 * v.1.0.5 - Fixing tables names in migrations
 * v.1.0.4 - Bugfix and refactoring
 * v.1.0.3 - Added base CRUD interface

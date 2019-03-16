@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 1.0.6 (2019-03-16)
+ * Added dashboard navigation items for NavBar
+
 ## 1.0.5 (2019-02-28)
  * Added module priority of initialization
  * Fixing tables names in migrations
