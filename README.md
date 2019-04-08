@@ -6,6 +6,7 @@ Ticket system for Yii2
 # Requirements 
 * PHP 5.6 or higher
 * Yii2 v.2.0.13 and newest
+* [Yii2 Editor](https://github.com/wdmg/yii2-editor) module
 * [Yii2 Tasks](https://github.com/wdmg/yii2-tasks) module (optionaly)
 * [Yii2 Users](https://github.com/wdmg/yii2-users) module (optionaly)
 
@@ -61,6 +62,7 @@ Use the `Module::dashboardNavItems()` method of the module to generate a navigat
 
 
 # Status and version [in progress development]
+* v.1.0.7 - Fixing route rules, added WYSIWYG editor
 * v.1.0.6 - Added dashboard navigation items for NavBar
 * v.1.0.5 - Fixing tables names in migrations
 * v.1.0.4 - Bugfix and refactoring

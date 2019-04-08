@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use wdmg\widgets\Editor;
 
 /* @var $this yii\web\View */
 /* @var $model wdmg\tickets\models\Tickets */
@@ -14,7 +15,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'subject')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'message')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'message')->widget(Editor::className(), [
+        'options' => [],
+        'pluginOptions' => []
+    ]) ?>
 
     <?= $form->field($model, 'user_id')->textInput() ?>
 

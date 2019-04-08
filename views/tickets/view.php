@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\HtmlPurifier;
 use yii\widgets\DetailView;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
@@ -25,7 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'subject',
-            'message:ntext',
+            [
+                'attribute' => 'message',
+                'format' => 'html',
+                'value' => function($model) {
+                    $purifier = new HtmlPurifier;
+                    return $purifier->process($model->message);
+                }
+            ],
             [
                 'attribute' => 'user_id',
                 'format' => 'html',

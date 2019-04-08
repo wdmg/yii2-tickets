@@ -27,7 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'subject',
-            'message:ntext',
+            [
+                'attribute' => 'message',
+                'format' => 'raw',
+                'value' => function($model) {
+                    return strip_tags($model->message);
+                }
+            ],
             [
                 'attribute' => 'user_id',
                 'format' => 'html',

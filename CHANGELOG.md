@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 1.0.7 (2019-04-08)
+ * Fixing route rules, added WYSIWYG editor
+ 
 ## 1.0.6 (2019-03-16)
  * Added dashboard navigation items for NavBar
 
