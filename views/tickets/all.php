@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'message',
                 'format' => 'raw',
                 'value' => function($model) {
-                    return strip_tags($model->message);
+                    return mb_strimwidth(strip_tags($model->message), 0, 120, '…');
                 }
             ],
             [

@@ -26,9 +26,21 @@ class Bootstrap implements BootstrapInterface
         $app->getUrlManager()->addRules(
             [
                 $prefix . '<module:tickets>/' => '<module>/list/all',
-                $prefix . '<module:tickets>/<controller:(list)>/' => '<module>/<controller>',
-                $prefix . '<module:tickets>/<controller:(list)>/<action:(all|my|current)>' => '<module>/<controller>/<action>',
-                $prefix . '<module:tickets>/<controller:(item)>/<action:(view|update|delete|set)>' => '<module>/<controller>/<action>',
+                $prefix . '<module:tickets>/<controller:(list|item)>/' => '<module>/<controller>',
+                $prefix . '<module:tickets>/<controller:(list|item)>/<action:\w+>' => '<module>/<controller>/<action>',
+                [
+                    'pattern' => $prefix . '<module:tickets>/',
+                    'route' => '<module>/list/all',
+                    'suffix' => '',
+                ], [
+                    'pattern' => $prefix . '<module:tickets>/<controller:(list|item)>/',
+                    'route' => '<module>/<controller>',
+                    'suffix' => '',
+                ], [
+                    'pattern' => $prefix . '<module:tickets>/<controller:(list|item)>/<action:\w+>',
+                    'route' => '<module>/<controller>/<action>',
+                    'suffix' => '',
+                ],
             ],
             true
         );
