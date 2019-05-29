@@ -8,7 +8,7 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app/modules/tickets', 'My tickets');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app/modules/tickets', 'Tickets'), 'url' => ['list/all']];
+$this->params['breadcrumbs'][] = ['label' => $this->context->module->name, 'url' => ['list/all']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>

@@ -62,11 +62,5 @@ Use the `Module::dashboardNavItems()` method of the module to generate a navigat
 
 
 # Status and version [in progress development]
+* v.1.1.0 - Added module name and description, translations. Routing fix.
 * v.1.0.7 - Fixing route rules, added WYSIWYG editor
-* v.1.0.6 - Added dashboard navigation items for NavBar
-* v.1.0.5 - Fixing tables names in migrations
-* v.1.0.4 - Bugfix and refactoring
-* v.1.0.3 - Added base CRUD interface
-* v.1.0.2 - Added routing path to Bootstrap.
-* v.1.0.1 - Added migrations path to Bootstrap.
-* v.1.0.0 - First pre-release

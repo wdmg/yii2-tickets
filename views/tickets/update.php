@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = Yii::t('app/modules/tickets', 'Update ticket: {name}', [
     'name' => $model->subject,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app/modules/tickets', 'Tickets'), 'url' => ['list/all']];
+$this->params['breadcrumbs'][] = ['label' => $this->context->module->name, 'url' => ['list/all']];
 $this->params['breadcrumbs'][] = ['label' => $model->subject, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app/modules/tickets', 'Update');
 

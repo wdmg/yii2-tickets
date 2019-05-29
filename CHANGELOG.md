@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 1.1.0 (2019-05-28)
+ * Added module name and description, translations. Routing fix.
+ 
 ## 1.0.7 (2019-04-08)
  * Fixing route rules, added WYSIWYG editor
  

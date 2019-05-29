@@ -11,7 +11,7 @@ use wdmg\helpers\DateAndTime;
 /* @var $model wdmg\tickets\models\Tickets */
 
 $this->title = $model->subject;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app/modules/tickets', 'Tickets'), 'url' => ['list/all']];
+$this->params['breadcrumbs'][] = ['label' => $this->context->module->name, 'url' => ['list/all']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 

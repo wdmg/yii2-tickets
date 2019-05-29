@@ -3,6 +3,8 @@
 return [
 
     'Tickets' => 'Тикеты',
+    'Support Ticket System' => 'Система тикетов поддержки',
+
     'All tickets' => 'Все тикеты',
     'My tickets' => 'Мои тикеты',
     'User tickets' => 'Тикеты пользователя',
