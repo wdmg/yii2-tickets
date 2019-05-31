@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 1.1.1 (2019-05-31)
+ * Update Yii2 version
+
 ## 1.1.0 (2019-05-28)
  * Added module name and description, translations. Routing fix.
  
