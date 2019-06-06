@@ -35,7 +35,7 @@ class MessagesController extends Controller
                         'allow' => true
                     ],
                 ],
-            ],
+            ]
         ];
 
         // If auth manager not configured use default access control

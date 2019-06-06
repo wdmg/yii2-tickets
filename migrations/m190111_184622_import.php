@@ -4,9 +4,9 @@ use yii\db\Migration;
 use yii\base\Security;
 
 /**
- * Class m180111_182318_import
+ * Class m190111_184622_import
  */
-class m180111_184622_import extends Migration
+class m190111_184622_import extends Migration
 {
     /**
      * {@inheritdoc}

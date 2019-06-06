@@ -42,7 +42,7 @@ class ListController extends Controller
                         'allow' => true
                     ],
                 ],
-            ],
+            ]
         ];
 
         // If auth manager not configured use default access control
@@ -67,27 +67,27 @@ class ListController extends Controller
     public function beforeAction($action)
     {
         $viewed = array();
-        $modules = array();
+        $required = array();
         $session = Yii::$app->session;
 
-        if(!isset(Yii::$app->modules['users']))
-            $modules[] = '«Users»';
+        if(!isset(Yii::$app->extensions['wdmg/yii2-users']) && !$this->module->moduleLoaded('users'))
+            $required[] = '«Users»';
 
-        if(!isset(Yii::$app->modules['tasks']))
-            $modules[] = '«Tasks»';
+        if(!isset(Yii::$app->extensions['wdmg/yii2-tasks']) && !$this->module->moduleLoaded('tasks'))
+            $required[] = '«Tasks»';
 
         if(isset($session['viewed-flash']) && is_array($session['viewed-flash']))
             $viewed = $session['viewed-flash'];
 
-        if(count($modules) > 0 && !in_array('tickets-need-modules', $viewed) && is_array($viewed)) {
+        if(count($required) > 0 && !in_array('tickets-need-modules', $viewed) && is_array($viewed)) {
             Yii::$app->getSession()->setFlash(
                 'warning',
                 Yii::t(
                     'app/modules/tickets',
                     'Some fields may contain limited information. We recommend installing the {modules} {count, plural, =1{module} one{module} few{modules} many{modules} other{modules}} for complete compatibility.',
                     [
-                        'modules' => implode(', ', $modules),
-                        'count' => count($modules)
+                        'modules' => implode(', ', $required),
+                        'count' => count($required)
                     ]
                 )
             );
