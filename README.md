@@ -6,6 +6,7 @@ Ticket system for Yii2
 # Requirements 
 * PHP 5.6 or higher
 * Yii2 v.2.0.20 and newest
+* [Yii2 Base](https://github.com/wdmg/yii2-base) module (required)
 * [Yii2 Editor](https://github.com/wdmg/yii2-editor) module
 * [Yii2 Tasks](https://github.com/wdmg/yii2-tasks) module (optionaly)
 * [Yii2 Users](https://github.com/wdmg/yii2-users) module (optionaly)
