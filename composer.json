@@ -1,10 +1,10 @@
 {
   "name": "wdmg/yii2-tickets",
-  "description": "Ticket system for Yii2",
+  "description": "Support tickets system",
   "keywords": ["yii2", "yii2-tickets", "ticket system", "wdmg"],
   "type": "yii2-extension",
   "license": "MIT",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "homepage": "https://github.com/wdmg/yii2-tickets",
   "support": {
     "source": "https://github.com/wdmg/yii2-tickets",
