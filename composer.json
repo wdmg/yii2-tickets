@@ -4,7 +4,7 @@
   "keywords": ["yii2", "yii2-tickets", "ticket system", "wdmg"],
   "type": "yii2-extension",
   "license": "MIT",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "homepage": "https://github.com/wdmg/yii2-tickets",
   "support": {
     "source": "https://github.com/wdmg/yii2-tickets",
@@ -30,6 +30,11 @@
   "autoload": {
     "psr-4": {
       "wdmg\\tickets\\": ""
+    }
+  },
+  "extra": {
+    "options": {
+      "routePrefix": "admin"
     }
   }
 }
