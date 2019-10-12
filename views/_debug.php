@@ -32,4 +32,4 @@ if (YII_ENV_DEV) : ?>
             </div>
         </div>
     </div>
-<? endif; ?>
+<?php endif; ?>
