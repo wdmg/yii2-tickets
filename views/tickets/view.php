@@ -194,33 +194,34 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= ListView::widget([
         'dataProvider' => $dataProvider,
         'itemView' => function ($data, $key, $index, $widget) use ($model) {
-            if ($data->ticket_id == $model->id) {
-                ?>
+            if ($data->ticket_id == $model->id) { ?>
                 <dl id="ticketMessage-<?= $data->ticket_id ?>" class="dl-horizontal border-bottom">
                     <dt><?= Yii::t('app/modules/tickets', 'User') ?>:</dt>
                     <dd><?php
-                        if($data->sender_id == $data->sender['id'])
-                            if($data->sender['id'] && $data->sender['username'])
-                                echo Html::a($data->sender['username'], ['../admin/users/view/?id='.$data->sender['id']], [
+                        if ($data->sender_id == $data->sender['id']) {
+                            if ($data->sender['id'] && $data->sender['username']) {
+                                echo Html::a($data->sender['username'], ['../admin/users/view/?id=' . $data->sender['id']], [
                                     'target' => '_blank',
                                     'data-pjax' => 0
                                 ]);
-                            else
+                            } else {
                                 echo $data->sender_id;
-                        else
+                            }
+                        } else {
                             echo $data->sender_id;
-
+                        }
                     ?></dd>
                     <dt><?= Yii::t('app/modules/tickets', 'Date/time') ?>:</dt>
-                    <dd><?= \Yii::$app->formatter->asDatetime($data->created_at, 'long') ?></dd>
+                    <dd><?= Yii::$app->formatter->asDatetime($data->created_at, 'long') ?></dd>
                     <dt><?= Yii::t('app/modules/tickets', 'Message text') ?>:</dt>
                     <dd><?= $data->message ?></dd>
-                    <?php if ($data->attachment_id) : ?>
-                        <?php if (($data->attachment_id == $data->attachment['id']) && ($data->sender_id == $data->attachment['sender_id'])) : ?>
-                            <dt><?= Yii::t('app/modules/tickets', 'Attachment') ?>:</dt>
-                            <dd><?= Html::a($data->attachment['filename'], "#", ['id' => 'ticketAttachment-'.$data->attachment_id]) ?></dd>
-                        <? endif; ?>
-                    <? endif; ?>
+                    <?php if ($data->attachment_id) {
+                        if (($data->attachment_id == $data->attachment['id']) && ($data->sender_id == $data->attachment['sender_id'])) { ?>
+                            <dt><?= Yii::t('app/modules/tickets', 'Attachment'); ?>:</dt>
+                            <dd><?= Html::a($data->attachment['filename'], "#", ['id' => 'ticketAttachment-'.$data->attachment_id]); ?></dd>
+                        <?php
+                        }
+                    } ?>
                 </dl>
                 <?php
             }
