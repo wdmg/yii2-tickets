@@ -15,7 +15,7 @@ use wdmg\widgets\Editor;
 
     <?= $form->field($model, 'subject')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'message')->widget(Editor::className(), [
+    <?= $form->field($model, 'message')->widget(Editor::class, [
         'options' => [],
         'pluginOptions' => []
     ]) ?>

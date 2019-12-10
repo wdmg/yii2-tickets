@@ -66,7 +66,7 @@ class Tickets extends \yii\db\ActiveRecord
     {
         return [
             'timestamp' => [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
                 'attributes' => [
                     self::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
                     self::EVENT_BEFORE_UPDATE => 'updated_at',
@@ -91,7 +91,7 @@ class Tickets extends \yii\db\ActiveRecord
         ];
 
         if(class_exists('\wdmg\tasks\models\Tasks') && isset(Yii::$app->modules['tasks']))
-            $rules[] = [['task_id'], 'exist', 'skipOnError' => true, 'targetClass' => \wdmg\tasks\models\Tasks::className(), 'targetAttribute' => ['task_id' => 'id']];
+            $rules[] = [['task_id'], 'exist', 'skipOnError' => true, 'targetClass' => \wdmg\tasks\models\Tasks::class, 'targetAttribute' => ['task_id' => 'id']];
 
         return $rules;
     }
@@ -123,7 +123,7 @@ class Tickets extends \yii\db\ActiveRecord
     public function getTask()
     {
         if(class_exists('\wdmg\tasks\models\Tasks') && isset(Yii::$app->modules['tasks']))
-            return $this->hasOne(\wdmg\tasks\models\Tasks::className(), ['id' => 'task_id']);
+            return $this->hasOne(\wdmg\tasks\models\Tasks::class, ['id' => 'task_id']);
         else
             return null;
     }
@@ -134,7 +134,7 @@ class Tickets extends \yii\db\ActiveRecord
     public function getSubunit()
     {
         if(class_exists('\wdmg\tasks\models\TasksSubunits') && isset(Yii::$app->modules['tasks']))
-            return $this->hasOne(\wdmg\tasks\models\TasksSubunits::className(), ['id' => 'subunit_id']);
+            return $this->hasOne(\wdmg\tasks\models\TasksSubunits::class, ['id' => 'subunit_id']);
         else
             return null;
     }
@@ -144,7 +144,7 @@ class Tickets extends \yii\db\ActiveRecord
      */
     public function getTicketsAttachments()
     {
-        return $this->hasMany(TicketsAttachments::className(), ['ticket_id' => 'id']);
+        return $this->hasMany(TicketsAttachments::class, ['ticket_id' => 'id']);
     }
 
     /**
@@ -152,7 +152,7 @@ class Tickets extends \yii\db\ActiveRecord
      */
     public function getTicketsMessages()
     {
-        return $this->hasMany(TicketsMessages::className(), ['ticket_id' => 'id']);
+        return $this->hasMany(TicketsMessages::class, ['ticket_id' => 'id']);
     }
 
     /**
@@ -161,7 +161,7 @@ class Tickets extends \yii\db\ActiveRecord
     public function getAssigned()
     {
         if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']))
-            return $this->hasOne(\wdmg\users\models\Users::className(), ['id' => 'assigned_id']);
+            return $this->hasOne(\wdmg\users\models\Users::class, ['id' => 'assigned_id']);
         else
             return null;
     }
@@ -172,7 +172,7 @@ class Tickets extends \yii\db\ActiveRecord
     public function getUser($user_id = null)
     {
         if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']) && !$user_id)
-            return $this->hasOne(\wdmg\users\models\Users::className(), ['id' => 'user_id']);
+            return $this->hasOne(\wdmg\users\models\Users::class, ['id' => 'user_id']);
         else if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']) && $user_id)
             return \wdmg\users\models\Users::findOne(['id' => intval($user_id)]);
         else

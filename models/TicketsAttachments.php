@@ -36,7 +36,7 @@ class TicketsAttachments extends \yii\db\ActiveRecord
     {
         return [
             'timestamp' => [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
                 'attributes' => [
                     self::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
                     self::EVENT_BEFORE_UPDATE => 'updated_at',
@@ -58,7 +58,7 @@ class TicketsAttachments extends \yii\db\ActiveRecord
             [['ticket_id', 'sender_id', 'status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['filename'], 'string', 'max' => 64],
-            [['ticket_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tickets::className(), 'targetAttribute' => ['ticket_id' => 'id']],
+            [['ticket_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tickets::class, 'targetAttribute' => ['ticket_id' => 'id']],
         ];
     }
 
@@ -83,7 +83,7 @@ class TicketsAttachments extends \yii\db\ActiveRecord
      */
     public function getTicket()
     {
-        return $this->hasOne(Tickets::className(), ['id' => 'ticket_id']);
+        return $this->hasOne(Tickets::class, ['id' => 'ticket_id']);
     }
 
     /**
@@ -91,6 +91,6 @@ class TicketsAttachments extends \yii\db\ActiveRecord
      */
     public function getTicketsMessages()
     {
-        return $this->hasMany(TicketsMessages::className(), ['attachment_id' => 'id']);
+        return $this->hasMany(TicketsMessages::class, ['attachment_id' => 'id']);
     }
 }

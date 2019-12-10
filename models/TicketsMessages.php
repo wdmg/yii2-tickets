@@ -37,7 +37,7 @@ class TicketsMessages extends \yii\db\ActiveRecord
     {
         return [
             'timestamp' => [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
                 'attributes' => [
                     self::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
                     self::EVENT_BEFORE_UPDATE => 'updated_at',
@@ -59,8 +59,8 @@ class TicketsMessages extends \yii\db\ActiveRecord
             [['ticket_id', 'sender_id', 'attachment_id'], 'integer'],
             [['message'], 'string'],
             [['attachment', 'created_at', 'updated_at'], 'safe'],
-            [['attachment_id'], 'exist', 'skipOnError' => true, 'targetClass' => TicketsAttachments::className(), 'targetAttribute' => ['attachment_id' => 'id']],
-            [['ticket_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tickets::className(), 'targetAttribute' => ['ticket_id' => 'id']],
+            [['attachment_id'], 'exist', 'skipOnError' => true, 'targetClass' => TicketsAttachments::class, 'targetAttribute' => ['attachment_id' => 'id']],
+            [['ticket_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tickets::class, 'targetAttribute' => ['ticket_id' => 'id']],
         ];
     }
 
@@ -86,7 +86,7 @@ class TicketsMessages extends \yii\db\ActiveRecord
      */
     public function getAttachment()
     {
-        return $this->hasOne(TicketsAttachments::className(), ['id' => 'attachment_id']);
+        return $this->hasOne(TicketsAttachments::class, ['id' => 'attachment_id']);
     }
 
     /**
@@ -94,7 +94,7 @@ class TicketsMessages extends \yii\db\ActiveRecord
      */
     public function getTicket()
     {
-        return $this->hasOne(Tickets::className(), ['id' => 'ticket_id']);
+        return $this->hasOne(Tickets::class, ['id' => 'ticket_id']);
     }
 
     /**
@@ -103,7 +103,7 @@ class TicketsMessages extends \yii\db\ActiveRecord
     public function getSender()
     {
         if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']))
-            return $this->hasOne(\wdmg\users\models\Users::className(), ['id' => 'sender_id']);
+            return $this->hasOne(\wdmg\users\models\Users::class, ['id' => 'sender_id']);
         else
             return null;
     }
