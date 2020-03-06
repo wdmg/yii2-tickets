@@ -9,7 +9,7 @@ namespace wdmg\tickets;
  * @version         1.1.7
  * @author          Alexsander Vyshnyvetskyy <alex.vyshnyvetskyy@gmail.com>
  * @link            https://github.com/wdmg/yii2-tickets
- * @copyright       Copyright (c) 2019 W.D.M.Group, Ukraine
+ * @copyright       Copyright (c) 2019 - 2020 W.D.M.Group, Ukraine
  * @license         https://opensource.org/licenses/MIT Massachusetts Institute of Technology (MIT) License
  *
  */
