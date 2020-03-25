@@ -21,10 +21,10 @@
     }
   ],
   "require": {
-    "yiisoft/yii2": "^2.0.20",
-    "wdmg/yii2-base": "^1.0.1",
-    "wdmg/yii2-editor": "^1.0.6",
-    "wdmg/yii2-helpers": "^1.1.2"
+    "yiisoft/yii2": "^2.0.33",
+    "wdmg/yii2-base": "^1.1.6",
+    "wdmg/yii2-editor": "^1.0.7",
+    "wdmg/yii2-helpers": "^1.3.1"
   },
   "minimum-stability": "dev",
   "autoload": {
