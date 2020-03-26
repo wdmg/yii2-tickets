@@ -36,6 +36,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
+        'pager' => [
+            'options' => [
+                'class' => 'pagination',
+            ],
+            'maxButtonCount' => 5,
+            'activePageCssClass' => 'active',
+            'linkContainerOptions' => [
+                'class' => 'linkContainerOptions',
+            ],
+            'linkOptions' => [
+                'class' => 'linkOptions',
+            ],
+            'prevPageCssClass' => '',
+            'nextPageCssClass' => '',
+            'firstPageCssClass' => 'previous',
+            'lastPageCssClass' => 'next',
+            'firstPageLabel' => Yii::t('app/modules/tickets', 'First page'),
+            'lastPageLabel'  => Yii::t('app/modules/tickets', 'Last page'),
+            'prevPageLabel'  => Yii::t('app/modules/tickets', '&larr; Prev page'),
+            'nextPageLabel'  => Yii::t('app/modules/tickets', 'Next page &rarr;')
+        ],
     ]); ?>
     <?php Pjax::end(); ?>
 </div>

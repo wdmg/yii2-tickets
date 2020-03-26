@@ -6,7 +6,7 @@ namespace wdmg\tickets;
  * Yii2 Tickets
  *
  * @category        Module
- * @version         1.1.7
+ * @version         1.1.8
  * @author          Alexsander Vyshnyvetskyy <alex.vyshnyvetskyy@gmail.com>
  * @link            https://github.com/wdmg/yii2-tickets
  * @copyright       Copyright (c) 2019 - 2020 W.D.M.Group, Ukraine
@@ -45,7 +45,7 @@ class Module extends BaseModule
     /**
      * @var string the module version
      */
-    private $version = "1.1.7";
+    private $version = "1.1.8";
 
     /**
      * @var integer, priority of initialization
