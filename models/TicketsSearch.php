@@ -29,6 +29,11 @@ class TicketsSearch extends Tickets
     public $executor;
 
     /**
+     * @var Instance of current module
+     */
+    private $_module;
+
+    /**
      * {@inheritdoc}
      */
     public function rules()
@@ -89,7 +94,7 @@ class TicketsSearch extends Tickets
         ]);
 
         // custom search: get task_id requested by title
-        if(!is_int($this->task_id) && !empty($this->task_id) && (class_exists('\wdmg\tasks\models\Tasks') && isset(Yii::$app->modules['tasks']))) {
+        if(!is_int($this->task_id) && !empty($this->task_id) && (class_exists('\wdmg\tasks\models\Tasks') && $this->_module->moduleLoaded('tasks'))) {
             $task_id = \wdmg\tasks\models\Tasks::find()->andFilterWhere(['like', 'title', $this->task_id])->one();
             $query->andFilterWhere(['task_id' => $task_id]);
         } else {

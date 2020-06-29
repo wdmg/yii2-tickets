@@ -3,6 +3,7 @@
 namespace wdmg\tickets\models;
 
 use Yii;
+use \wdmg\base\models\ActiveRecord;
 use \yii\behaviors\TimeStampBehavior;
 
 /**
@@ -24,7 +25,7 @@ use \yii\behaviors\TimeStampBehavior;
  * @property TicketsAttachments[] $ticketsAttachments
  * @property TicketsMessages[] $ticketsMessages
  */
-class Tickets extends \yii\db\ActiveRecord
+class Tickets extends ActiveRecord
 {
 
     /**
@@ -52,6 +53,11 @@ class Tickets extends \yii\db\ActiveRecord
     const TK_LABEL_WONTFIX = 10;
 
     /**
+     * @var Instance of current module
+     */
+    private $_module;
+
+    /**
      * {@inheritdoc}
      */
     public static function tableName()
@@ -60,6 +66,15 @@ class Tickets extends \yii\db\ActiveRecord
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function init()
+    {
+        parent::init();
+        $this->_module = parent::getModule(true);
+    }
+
+        /**
      * {@inheritdoc}
      */
     public function behaviors()
@@ -90,7 +105,7 @@ class Tickets extends \yii\db\ActiveRecord
             [['subject', 'access_token'], 'string', 'max' => 255],
         ];
 
-        if(class_exists('\wdmg\tasks\models\Tasks') && isset(Yii::$app->modules['tasks']))
+        if(class_exists('\wdmg\tasks\models\Tasks') && $this->_module->moduleLoaded('tasks'))
             $rules[] = [['task_id'], 'exist', 'skipOnError' => true, 'targetClass' => \wdmg\tasks\models\Tasks::class, 'targetAttribute' => ['task_id' => 'id']];
 
         return $rules;
@@ -122,7 +137,7 @@ class Tickets extends \yii\db\ActiveRecord
      */
     public function getTask()
     {
-        if(class_exists('\wdmg\tasks\models\Tasks') && isset(Yii::$app->modules['tasks']))
+        if (class_exists('\wdmg\tasks\models\Tasks') && $this->_module->moduleLoaded('tasks'))
             return $this->hasOne(\wdmg\tasks\models\Tasks::class, ['id' => 'task_id']);
         else
             return null;
@@ -133,7 +148,7 @@ class Tickets extends \yii\db\ActiveRecord
      */
     public function getSubunit()
     {
-        if(class_exists('\wdmg\tasks\models\TasksSubunits') && isset(Yii::$app->modules['tasks']))
+        if (class_exists('\wdmg\tasks\models\TasksSubunits') && $this->_module->moduleLoaded('tasks'))
             return $this->hasOne(\wdmg\tasks\models\TasksSubunits::class, ['id' => 'subunit_id']);
         else
             return null;
@@ -160,7 +175,7 @@ class Tickets extends \yii\db\ActiveRecord
      */
     public function getAssigned()
     {
-        if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']))
+        if (class_exists('\wdmg\users\models\Users') && $this->_module->moduleLoaded('users'))
             return $this->hasOne(\wdmg\users\models\Users::class, ['id' => 'assigned_id']);
         else
             return null;
@@ -171,9 +186,9 @@ class Tickets extends \yii\db\ActiveRecord
      */
     public function getUser($user_id = null)
     {
-        if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']) && !$user_id)
+        if (class_exists('\wdmg\users\models\Users') && $this->_module->moduleLoaded('users') && !$user_id)
             return $this->hasOne(\wdmg\users\models\Users::class, ['id' => 'user_id']);
-        else if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']) && $user_id)
+        else if (class_exists('\wdmg\users\models\Users') && $this->_module->moduleLoaded('users') && $user_id)
             return \wdmg\users\models\Users::findOne(['id' => intval($user_id)]);
         else
             return null;

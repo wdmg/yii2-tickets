@@ -70,16 +70,16 @@ class ListController extends Controller
         $required = array();
         $session = Yii::$app->session;
 
-        if(!isset(Yii::$app->extensions['wdmg/yii2-users']) && !$this->module->moduleLoaded('users'))
+        if (!$this->module->moduleLoaded('users'))
             $required[] = '«Users»';
 
-        if(!isset(Yii::$app->extensions['wdmg/yii2-tasks']) && !$this->module->moduleLoaded('tasks'))
+        if (!$this->module->moduleLoaded('tasks'))
             $required[] = '«Tasks»';
 
-        if(isset($session['viewed-flash']) && is_array($session['viewed-flash']))
+        if (isset($session['viewed-flash']) && is_array($session['viewed-flash']))
             $viewed = $session['viewed-flash'];
 
-        if(count($required) > 0 && !in_array('tickets-need-modules', $viewed) && is_array($viewed)) {
+        if (count($required) > 0 && !in_array('tickets-need-modules', $viewed) && is_array($viewed)) {
             Yii::$app->getSession()->setFlash(
                 'warning',
                 Yii::t(
@@ -93,10 +93,8 @@ class ListController extends Controller
             );
             $session['viewed-flash'] = array_merge(array_unique($viewed), ['tickets-need-modules']);
         }
-
-        // Set custom view path
+        
         parent::setViewPath('@vendor/wdmg/yii2-tickets/views/tickets');
-
         return parent::beforeAction($action);
     }
 

@@ -3,6 +3,7 @@
 namespace wdmg\tickets\models;
 
 use Yii;
+use \wdmg\base\models\ActiveRecord;
 use \yii\behaviors\TimeStampBehavior;
 
 /**
@@ -19,8 +20,14 @@ use \yii\behaviors\TimeStampBehavior;
  * @property Tickets $ticket
  * @property TicketsMessages[] $ticketsMessages
  */
-class TicketsAttachments extends \yii\db\ActiveRecord
+class TicketsAttachments extends ActiveRecord
 {
+
+    /**
+     * @var Instance of current module
+     */
+    private $_module;
+
     /**
      * {@inheritdoc}
      */

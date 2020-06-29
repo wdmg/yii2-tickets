@@ -3,6 +3,7 @@
 namespace wdmg\tickets\models;
 
 use Yii;
+use \wdmg\base\models\ActiveRecord;
 use \yii\behaviors\TimeStampBehavior;
 
 /**
@@ -19,8 +20,13 @@ use \yii\behaviors\TimeStampBehavior;
  * @property TicketsAttachments $attachment
  * @property Tickets $ticket
  */
-class TicketsMessages extends \yii\db\ActiveRecord
+class TicketsMessages extends ActiveRecord
 {
+
+    /**
+     * @var Instance of current module
+     */
+    private $_module;
 
     /**
      * {@inheritdoc}
@@ -102,7 +108,7 @@ class TicketsMessages extends \yii\db\ActiveRecord
      */
     public function getSender()
     {
-        if(class_exists('\wdmg\users\models\Users') && isset(Yii::$app->modules['users']))
+        if(class_exists('\wdmg\users\models\Users') && $this->_module->moduleLoaded('users'))
             return $this->hasOne(\wdmg\users\models\Users::class, ['id' => 'sender_id']);
         else
             return null;
