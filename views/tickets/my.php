@@ -36,12 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'user_id',
-                'format' => 'html',
+                'format' => 'raw',
                 'header' => Yii::t('app/modules/tickets', 'User'),
                 'value' => function($model) {
                     if($model->user_id == $model->user['id'])
                         if($model->user['id'] && $model->user['username'])
-                            return Html::a($model->user['username'], ['../admin/users/view/?id='.$model->user['id']], [
+                            return Html::a($model->user['username'], ['../users/users/view', 'id' => $model->user['id']], [
                                 'target' => '_blank',
                                 'data-pjax' => 0
                             ]);
@@ -53,12 +53,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'task_id',
-                'format' => 'html',
+                'format' => 'raw',
                 'header' => Yii::t('app/modules/tickets', 'Task'),
                 'value' => function($model) {
                     if($model->task_id == $model->task['id'])
                         if($model->task['id'] && $model->task['title'])
-                            return Html::a($model->task['title'], ['../admin/tasks/item/view/?id='.$model->task['id']], [
+                            return Html::a($model->task['title'], ['../tasks/item/view', 'id' => $model->task['id']], [
                                 'target' => '_blank',
                                 'data-pjax' => 0
                             ]);
@@ -70,12 +70,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'subunit_id',
-                'format' => 'html',
+                'format' => 'raw',
                 'header' => Yii::t('app/modules/tickets', 'Subunit'),
                 'value' => function($model) {
                     if($model->subunit_id == $model->subunit['id'])
                         if($model->subunit['id'] && $model->subunit['title'])
-                            return Html::a($model->subunit['title'], ['../admin/tasks/subunits/view/?id='.$model->subunit['id']], [
+                            return Html::a($model->subunit['title'], ['../tasks/subunits/view', 'id' => $model->subunit['id']], [
                                 'target' => '_blank',
                                 'data-pjax' => 0
                             ]);

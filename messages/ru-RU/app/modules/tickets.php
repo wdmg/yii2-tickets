@@ -37,7 +37,7 @@ return [
 
     'Open' => 'Открыт',
     'Waiting' => 'Ожидание',
-    'In Work' => 'В работе',
+    'In work' => 'В работе',
     'Closed' => 'Закрыт',
 
     'Label' => 'Метка',
@@ -51,6 +51,8 @@ return [
     'Question' => 'Вопрос',
     'Skipped' => 'Пропуск',
     'Wontfix' => 'Не исправить',
+
+    'Change ticket status on' => 'Изменить статус тикета на',
 
     'View ticket: {name}' => 'Просмотр тикета: {name}',
     'Update ticket: {name}' => 'Редактирование тикета: {name}',

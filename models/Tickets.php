@@ -74,7 +74,7 @@ class Tickets extends ActiveRecord
         $this->_module = parent::getModule(true);
     }
 
-        /**
+    /**
      * {@inheritdoc}
      */
     public function behaviors()
@@ -198,11 +198,11 @@ class Tickets extends ActiveRecord
      * Return all ticket status
      * @return array
      */
-    public static function getAllStatus()
+    public static function getAllStatusesList()
     {
         return [
             self::TK_STATUS_OPEN => Yii::t('app/modules/tickets', 'Open'),
-            self::TK_STATUS_WATING => Yii::t('app/modules/tickets', 'Wating'),
+            self::TK_STATUS_WATING => Yii::t('app/modules/tickets', 'Waiting'),
             self::TK_STATUS_INWORK => Yii::t('app/modules/tickets', 'In work'),
             self::TK_STATUS_CLOSED => Yii::t('app/modules/tickets', 'Closed')
         ];
@@ -212,7 +212,7 @@ class Tickets extends ActiveRecord
      * Return all ticket labels
      * @return array
      */
-    public static function getAllLabels()
+    public static function getAllLabelsList()
     {
         return [
             self::TK_LABEL_UNLABELED => Yii::t('app/modules/tickets', 'Unlabeled'),

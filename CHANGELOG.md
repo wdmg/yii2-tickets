@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## 1.1.9 (2020-07-01)
+ * Update dependencies, README.md
+ * Fixed error determining loading of common modules
+ * Rebased to base ActiveRecord model
+ 
 ## 1.1.8 (2020-03-27)
  * Added pagination
  * Up to date dependencies
@@ -18,7 +23,7 @@ Changelog
  * Module refactoring
  
 ## 1.1.3 (2019-06-05)
- * Module transferred to base module interface. Update Yii2 version.
+ * Module transferred to base module interface. Update Yii2 version
 
 ## 1.1.2 (2019-06-01)
  * Bugfix, routing and refactoring

@@ -233,7 +233,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <hr/>
     <?php if ($model->status !== $model::TK_STATUS_CLOSED) : ?>
         <div class="form-group">
-            <label><?= Yii::t('app/modules/tickets', 'Change task status on') ?>: </label>
+            <label><?= Yii::t('app/modules/tickets', 'Change ticket status on') ?>: </label>
             <?php
 
                 if($model->status !== $model::TK_STATUS_OPEN)

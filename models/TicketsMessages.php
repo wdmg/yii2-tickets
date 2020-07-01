@@ -39,6 +39,15 @@ class TicketsMessages extends ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public function init()
+    {
+        parent::init();
+        $this->_module = parent::getModule(true);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function behaviors()
     {
         return [

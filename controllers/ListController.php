@@ -93,7 +93,7 @@ class ListController extends Controller
             );
             $session['viewed-flash'] = array_merge(array_unique($viewed), ['tickets-need-modules']);
         }
-        
+
         parent::setViewPath('@vendor/wdmg/yii2-tickets/views/tickets');
         return parent::beforeAction($action);
     }

@@ -1,5 +1,6 @@
 <?php
 
+use wdmg\widgets\SelectInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use wdmg\widgets\Editor;
@@ -30,9 +31,21 @@ use wdmg\widgets\Editor;
 
     <?= $form->field($model, 'access_token')->textInput(['readonly' => true]) ?>
 
-    <?= $form->field($model, 'label')->dropDownList($model::getAllLabels()); ?>
+    <?= $form->field($model, 'label')->widget(SelectInput::class, [
+        'items' => $model->getAllLabelsList(),
+        'options' => [
+            'id' => 'ticket-form-label',
+            'class' => 'form-control'
+        ]
+    ]); ?>
 
-    <?= $form->field($model, 'status')->dropDownList($model::getAllStatus()); ?>
+    <?= $form->field($model, 'status')->widget(SelectInput::class, [
+        'items' => $model->getAllStatusesList(),
+        'options' => [
+            'id' => 'ticket-form-status',
+            'class' => 'form-control'
+        ]
+    ]); ?>
 
     <hr/>
     <div class="form-group">
