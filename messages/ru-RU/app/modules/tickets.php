@@ -60,6 +60,8 @@ return [
     'Ticket has been successfully updated!' => 'Тикет был успешно обновлён!',
     'An error occurred while updating the ticket.' => 'Произошла ошибка при обновлении тикета.',
 
+    'New tickets in the last 24 hours' => 'Новых тикетов за последние сутки',
+
     'Update' => 'Обновить',
     'Edit' => 'Редактировать',
     'Search' => 'Поиск',

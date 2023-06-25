@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 1.2.0 (2023-06-25)
+ * Update copyrights, add counter for dashboard
+
 ## 1.1.9 (2020-07-01)
  * Update dependencies, README.md
  * Fixed error determining loading of common modules

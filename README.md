@@ -1,4 +1,4 @@
-[![Yii2](https://img.shields.io/badge/required-Yii2_v2.0.40-blue.svg)](https://packagist.org/packages/yiisoft/yii2)
+[![Yii2](https://img.shields.io/badge/required-Yii2_v2.0.35-blue.svg)](https://packagist.org/packages/yiisoft/yii2)
 [![Downloads](https://img.shields.io/packagist/dt/wdmg/yii2-tickets.svg)](https://packagist.org/packages/wdmg/yii2-tickets)
 [![Packagist Version](https://img.shields.io/packagist/v/wdmg/yii2-tickets.svg)](https://packagist.org/packages/wdmg/yii2-tickets)
 ![Progress](https://img.shields.io/badge/progress-ready_to_use-green.svg)
@@ -11,11 +11,11 @@ Ticket system for Yii2.
                       
 This module is an integral part of the [Butterfly.СMS](https://butterflycms.com/) content management system, but can also be used as an standalone extension.
 
-Copyrights (c) 2019-2021 [W.D.M.Group, Ukraine](https://wdmg.com.ua/)
+Copyrights (c) 2019-2023 [W.D.M.Group, Ukraine](https://wdmg.com.ua/)
 
 # Requirements 
 * PHP 5.6 or higher
-* Yii2 v.2.0.40 and newest
+* Yii2 v.2.0.35 and newest
 * [Yii2 Base](https://github.com/wdmg/yii2-base) module (required)
 * [Yii2 Editor](https://github.com/wdmg/yii2-editor) module
 * [Yii2 Tasks](https://github.com/wdmg/yii2-tasks) module (optionaly)
@@ -67,9 +67,6 @@ Use the `Module::dashboardNavItems()` method of the module to generate a navigat
 
 
 # Status and version [ready to use]
+* v.1.2.0 - Update copyrights, add counter for dashboard
 * v.1.1.9 - Update dependencies, README.md
 * v.1.1.8 - Added pagination, up to date dependencies
-* v.1.1.7 - Fixed deprecated class declaration
-* v.1.1.6 - Added extra options to composer.json and navbar menu icon
-* v.1.1.5 - Added choice param for non interactive mode
-* v.1.1.4 - Module refactoring

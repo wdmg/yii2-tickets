@@ -198,6 +198,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'options' => [
                 'class' => 'pagination',
             ],
+            'maxButtonCount' => 5,
             'activePageCssClass' => 'active',
             'linkContainerOptions' => [
                 'class' => 'linkContainerOptions',
@@ -205,12 +206,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'linkOptions' => [
                 'class' => 'linkOptions',
             ],
-            'maxButtonCount' => 5,
-            'activePageCssClass' => 'active',
-            'prevPageCssClass' => 'prev',
-            'nextPageCssClass' => 'next',
-            'firstPageCssClass' => 'first',
-            'lastPageCssClass' => 'last',
+            'prevPageCssClass' => '',
+            'nextPageCssClass' => '',
+            'firstPageCssClass' => 'previous',
+            'lastPageCssClass' => 'next',
             'firstPageLabel' => Yii::t('app/modules/tickets', 'First page'),
             'lastPageLabel'  => Yii::t('app/modules/tickets', 'Last page'),
             'prevPageLabel'  => Yii::t('app/modules/tickets', '&larr; Prev page'),
